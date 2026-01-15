@@ -1,6 +1,18 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <assert.h>
+
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/types.h>
+
+#include "discord.h"
+#include "log.h"
+
 void reply_noping(struct discord *client, const struct discord_message *event, char *s);
 
 
