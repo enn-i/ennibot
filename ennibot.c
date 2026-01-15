@@ -17,7 +17,7 @@ void on_message_create(struct discord *client, const struct discord_message *eve
 
 }
 
-main(int argc, char *argv[]){
+int main(int argc, char *argv[]){
 	const char *config_file;
 	if (argc > 1)
 		config_file = argv[1];
@@ -43,4 +43,6 @@ main(int argc, char *argv[]){
 
 	discord_cleanup(client);
 	ccord_global_cleanup();
+
+	return 0;
 }
