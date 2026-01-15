@@ -22,7 +22,7 @@ void rotx(int x, char *string);
 void generate_code(char *code);
 
 
-void get_current_code(char *check)l
+void get_current_code(char *check);
 
 
 unsigned long long int ulld_rand(long long unsigned int max);
