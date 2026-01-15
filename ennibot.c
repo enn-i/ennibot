@@ -8,11 +8,21 @@
 
 void
 on_ready(struct discord *client, const struct discord_ready *event){
-	log_info("Ennibot, connected to discord through %s#%s!",
+	log_info("connected to discord through %s#%s!",
 			 event->user->username, event->user->discriminator);
 }
 
+void token_parser(char *message, char **tokens, int *args){
+
+	tokens = malloc(sizeof(char **) * 50);
+	char *p = message;
+	*args = 0;
+
+}
+
 void on_message_create(struct discord *client, const struct discord_message *event){
+	//char **tokens;
+
 	if (event->author->bot) return;
 
 }
@@ -29,6 +39,7 @@ int main(int argc, char *argv[]){
 	assert(NULL != client && "Couldn't initialize client");
 
 	discord_add_intents(client, DISCORD_GATEWAY_MESSAGE_CONTENT);
+	log_info("Ennibot starting... waiting for connection...");
 
 	discord_set_on_ready(client, &on_ready);
 	discord_set_on_message_create(client, &on_message_create);

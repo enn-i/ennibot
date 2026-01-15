@@ -21,7 +21,7 @@ $(botname) : $(links) $(H_FILES)
 	gcc $(CFLAGS) $(links) -o $(botname) $(LDFLAGS) $(LDLIBS)
 	./$(botname)
 
-$(links) : $(links) $(H_FILES)
+$(links) : $(compiles) $(H_FILES)
 	gcc $(CFLAGS) -c $(compiles) 
 
 
