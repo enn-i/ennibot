@@ -12,20 +12,33 @@ on_ready(struct discord *client, const struct discord_ready *event){
 			 event->user->username, event->user->discriminator);
 }
 
-void token_parser(char *message, char **tokens, int *args){
-
-	tokens = malloc(sizeof(char **) * 50);
-	char *p = message;
+char **token_parser(char *message, int *args){
+	// setting up two passed pointers
+	char **tokens = malloc(sizeof(char *) * 50);
 	*args = 0;
-
+	// Tokenising with strsep and copying memory to tokens array
+	char *p = message; 
+	for(int i = 0; (tokens[i] = strdup(strsep(&p, " "))) && i < 50; i++)
+		(*args)++;
+	return tokens;
+}
+void free_tokens(char **tokens){
+	for(int i = 0; i < 50; i++) free(tokens[i]);
+	free(tokens);
 }
 
 void on_message_create(struct discord *client, const struct discord_message *event){
-	//char **tokens;
-
+	char *message = strdup(event->content);
+	int argc;
+	char **tokens = token_parser(message, &argc);
+	
+	
 	if (event->author->bot) return;
-
+	
+	
+	free_tokens(tokens);
 }
+
 
 int main(int argc, char *argv[]){
 	const char *config_file;
@@ -43,12 +56,6 @@ int main(int argc, char *argv[]){
 
 	discord_set_on_ready(client, &on_ready);
 	discord_set_on_message_create(client, &on_message_create);
-	//discord_set_on_message_update(client, &on_message_update);
-	//discord_set_on_message_delete(client, &on_message_delete);
-	//discord_set_on_message_reaction_add(client, &on_reaction_add);
-	//discord_set_on_message_delete_bulk(client, &on_message_delete_bulk);
-
-	fgetc(stdin); // wait for input
 
 	discord_run(client);
 
