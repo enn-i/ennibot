@@ -16,13 +16,13 @@ on_ready(struct discord *client, const struct discord_ready *event){
 
 char **token_parser(char *message, int *args){
 	// setting up two passed pointers
-	char **tokens = malloc(sizeof(char *) * 50);
+	char **tokens = malloc(sizeof(char *) * 10);
 	*args = 0;
 	// Tokenising with strsep and copying memory to tokens array
 	char *p = message; 
 	char *mp;
 
-	for(int i = 0; (mp = strsep(&p, " ")) && i < 50; i++){
+	for(int i = 0; (mp = strsep(&p, " ")) && i < 10; i++){
 		tokens[i] = strdup(mp);
 		(*args)++;
 	}
@@ -33,8 +33,9 @@ void free_tokens(char **tokens, int argc){
 	free(tokens);
 }
 
-char parser(int argc, char **argv){
+char parser(int argc, char **argv, char *message){
 	char *cmd = argv[0] + 1;
+	
 
 
 	return 0;
@@ -48,7 +49,7 @@ void on_message_create(struct discord *client, const struct discord_message *eve
 	int argc;
 	char **tokens = token_parser(message, &argc);
 	
-	if(!parser(argc, tokens))
+	if(!parser(argc, tokens, message))
 		log_info("Invalid parse, command: %s", tokens[0]);
 	
 	free_tokens(tokens, argc);
