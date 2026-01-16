@@ -5,7 +5,8 @@
 
 #include "discord.h"
 #include "log.h"
-#include "commands.h"
+#include "utils_ennibot.h"
+#include "wrappers.h"
 
 #define PREFIX "?"
 
