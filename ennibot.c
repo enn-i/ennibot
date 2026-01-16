@@ -24,8 +24,10 @@ char **token_parser(char *message, int *args){
 	char *p = strdup(message); 
 	char *mp;
 
-	for(int i = 0; (mp = strsep(&p, " ")) && i < 10; i++){
-		tokens[i] = strdup(mp);
+	for(int i = 0; i < 10; i++){
+		if((mp = strsep(&p, " ")))
+			tokens[i] = strdup(mp);
+		else tokens[i] = NULL;
 		(*args)++;
 	}
 	free(p);
@@ -65,10 +67,15 @@ char parser(struct discord *client, const struct discord_message *event, int arg
 		return 1;
 	}
 	else if(!strcmp(cmd, "dice")){
+		dice(client, event, argv[1], argv[2]);
 		return 1;
 	}
 	else if(!strcmp(cmd, "pray")){
 		pray_wrap(client, event);
+		return 1;
+	}
+	else if(!strcmp(cmd, "ottomanempire")){
+		ottomanempire_embed(client, event);
 		return 1;
 	}
 	

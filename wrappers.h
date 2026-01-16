@@ -16,13 +16,15 @@ void watcher_embed(struct discord *client, const struct discord_message *event);
 void enot_embed(struct discord *client, const struct discord_message *event);
 
 
-void rotx_send(struct discord *client, const struct discord_message *event, char *rot, char *message);
+void ottomanempire_embed(struct discord *client, const struct discord_message *event);
 
+
+void rotx_send(struct discord *client, const struct discord_message *event, char *rot, char *message);
 
 
 void pray_wrap(struct discord *client, const struct discord_message *event);
 
 
-void dice(struct discord *client, const struct discord_message *event, long long unsigned int max, char *code);
+void dice(struct discord *client, const struct discord_message *event, char *ms, char *code);
 
 #endif
