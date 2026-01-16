@@ -66,6 +66,10 @@ char parser(struct discord *client, const struct discord_message *event, int arg
 	else if(!strcmp(cmd, "dice")){
 		return 1;
 	}
+	else if(!strcmp(cmd, "pray")){
+		pray_wrap(client, event);
+		return 1;
+	}
 	
 	return 0;
 }

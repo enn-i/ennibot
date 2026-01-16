@@ -105,6 +105,16 @@ void generate_code(char *code){
 
 }
 
+void pray_wrap(struct discord *client, const struct discord_message *event){
+	char *s = malloc(16);
+	get_current_code(s);
+	char *r = malloc(32);
+	sprintf(r, "`%s`", s);
+	reply_noping(client, event, r);
+	free(r);
+	free(s);
+}
+
 void get_current_code(char *check){
 	FILE *f = fopen("current.code", "r"); 
 	if (f <= 0){
@@ -113,7 +123,7 @@ void get_current_code(char *check){
 		f = fopen("current.code", "r");
 		fgets(check, 16, f);
 	}
-	log_info("Current code: %s", check);
+	//log_info("Current code: %s", check);
 	fclose(f);
 }
 

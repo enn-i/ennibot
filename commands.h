@@ -34,6 +34,9 @@ void rotx_send(struct discord *client, const struct discord_message *event, char
 void rotx(int x, char *string);
 
 
+void pray_wrap(struct discord *client, const struct discord_message *event);
+
+
 void generate_code(char *code);
 
 
