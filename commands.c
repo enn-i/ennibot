@@ -21,13 +21,6 @@ void reply_noping(struct discord *client, const struct discord_message *event, c
 void sm_reply_reply_delete(struct discord *client, const struct discord_message *event, char *s){
 	struct discord_create_message params = { 
 		 .content = s,
-		 /* reference sender
-		 .message_reference = &(struct discord_message_reference){
-			.message_id = event->id,
-			.channel_id = event->channel_id,
-			.guild_id = event->guild_id,
-		 },
-		 */
 		 .message_reference = !event->referenced_message ? NULL : &(struct discord_message_reference){
 					 .message_id = event->referenced_message->id,
 					 .channel_id = event->channel_id,

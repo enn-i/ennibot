@@ -34,15 +34,34 @@ void free_tokens(char **tokens, int argc){
 	free(tokens);
 }
 
+char *after_arg(char *message, int i, char **argv){
+	while(i--) message += strlen(argv[0]);
+	message++;
+	return message;
+}
+
 char parser(struct discord *client, const struct discord_message *event, int argc, char **argv, char *message){
 	char *cmd = argv[0] + 1;
 	if(!strcmp(cmd, "enni")){
 		reply_noping(client, event, "Hi, that's me");
 		return 1;
 	}
+	else if(!strcmp(cmd, "echo")){
+		sm_reply_reply_delete(client, event, after_arg(message, 1, argv));
+		return 1;
+	}
+	else if(!strcmp(cmd, "enot")){
+		enot_embed(client, event);
+		return 1;
+	}
+	else if(!strcmp(cmd, "watcher")){
+		watcher_embed(client, event);
+		return 1;
+	}
+	else if(!strcmp(cmd, "")){
+		return 1;
+	}
 	
-
-
 	return 0;
 }
 
