@@ -61,7 +61,9 @@ char parser(struct discord *client, const struct discord_message *event, int arg
 	}
 	else if(!strcmp(cmd, "rotx")){
 		rotx_send(client, event, argv[1], after_arg(message, 2, argv));
-		
+		return 1;
+	}
+	else if(!strcmp(cmd, "dice")){
 		return 1;
 	}
 	
