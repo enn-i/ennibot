@@ -5,6 +5,7 @@
 
 #include "discord.h"
 #include "log.h"
+#include "commands.h"
 
 #define PREFIX "?"
 
@@ -33,8 +34,12 @@ void free_tokens(char **tokens, int argc){
 	free(tokens);
 }
 
-char parser(int argc, char **argv, char *message){
+char parser(struct discord *client, const struct discord_message *event, int argc, char **argv, char *message){
 	char *cmd = argv[0] + 1;
+	if(!strcmp(cmd, "enni")){
+		reply_noping(client, event, "Hi, that's me");
+		return 1;
+	}
 	
 
 
@@ -49,7 +54,7 @@ void on_message_create(struct discord *client, const struct discord_message *eve
 	int argc;
 	char **tokens = token_parser(message, &argc);
 	
-	if(!parser(argc, tokens, message))
+	if(!parser(client, event, argc, tokens, message))
 		log_info("Invalid parse, command: %s", tokens[0]);
 	
 	free_tokens(tokens, argc);
