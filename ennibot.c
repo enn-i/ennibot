@@ -6,6 +6,8 @@
 #include "discord.h"
 #include "log.h"
 
+#define PREFIX "?"
+
 void
 on_ready(struct discord *client, const struct discord_ready *event){
 	log_info("connected to discord through %s#%s!",
@@ -18,25 +20,38 @@ char **token_parser(char *message, int *args){
 	*args = 0;
 	// Tokenising with strsep and copying memory to tokens array
 	char *p = message; 
-	for(int i = 0; (tokens[i] = strdup(strsep(&p, " "))) && i < 50; i++)
+	char *mp;
+
+	for(int i = 0; (mp = strsep(&p, " ")) && i < 50; i++){
+		tokens[i] = strdup(mp);
 		(*args)++;
+	}
 	return tokens;
 }
-void free_tokens(char **tokens){
-	for(int i = 0; i < 50; i++) free(tokens[i]);
+void free_tokens(char **tokens, int argc){
+	for(int i = 0; i < argc; ++i) free(tokens[i]);
 	free(tokens);
 }
 
+char parser(int argc, char **argv){
+	char *cmd = argv[0] + 1;
+
+
+	return 0;
+}
+
 void on_message_create(struct discord *client, const struct discord_message *event){
+	if (event->author->bot) return;
+
 	char *message = strdup(event->content);
+	if(!(strstr(message, PREFIX) == message)) return; // detect prefix
 	int argc;
 	char **tokens = token_parser(message, &argc);
 	
+	if(!parser(argc, tokens))
+		log_info("Invalid parse, command: %s", tokens[0]);
 	
-	if (event->author->bot) return;
-	
-	
-	free_tokens(tokens);
+	free_tokens(tokens, argc);
 }
 
 
