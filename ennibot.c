@@ -20,13 +20,14 @@ char **token_parser(char *message, int *args){
 	char **tokens = malloc(sizeof(char *) * 10);
 	*args = 0;
 	// Tokenising with strsep and copying memory to tokens array
-	char *p = message; 
+	char *p = strdup(message); 
 	char *mp;
 
 	for(int i = 0; (mp = strsep(&p, " ")) && i < 10; i++){
 		tokens[i] = strdup(mp);
 		(*args)++;
 	}
+	free(p);
 	return tokens;
 }
 void free_tokens(char **tokens, int argc){
@@ -35,7 +36,7 @@ void free_tokens(char **tokens, int argc){
 }
 
 char *after_arg(char *message, int i, char **argv){
-	while(i--) message += strlen(argv[0]);
+	while(i--) message += strlen(argv[i]);
 	message++;
 	return message;
 }
@@ -58,7 +59,9 @@ char parser(struct discord *client, const struct discord_message *event, int arg
 		watcher_embed(client, event);
 		return 1;
 	}
-	else if(!strcmp(cmd, "")){
+	else if(!strcmp(cmd, "rotx")){
+		rotx_send(client, event, argv[1], after_arg(message, 2, argv));
+		
 		return 1;
 	}
 	

@@ -64,6 +64,13 @@ void enot_embed(struct discord *client, const struct discord_message *event){
 	simple_image_embed(client, event, "snot", "https://i.pinimg.com/736x/db/7e/9e/db7e9e8fc59d3b27e642466915fe441c.jpg", 0x00105a);
 }
 
+void rotx_send(struct discord *client, const struct discord_message *event, char *rot, char *message){
+	int x;
+	sscanf(rot, "%d", &x);
+	rotx(x, message);
+	reply_noping(client, event, message);
+}
+
 void rotx(int x, char *string){
 	char *s = string;
 	do{

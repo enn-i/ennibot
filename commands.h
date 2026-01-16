@@ -28,6 +28,9 @@ void watcher_embed(struct discord *client, const struct discord_message *event);
 void enot_embed(struct discord *client, const struct discord_message *event);
 
 
+void rotx_send(struct discord *client, const struct discord_message *event, char *rot, char *message);
+
+
 void rotx(int x, char *string);
 
 
