@@ -14,6 +14,10 @@ void ottomanempire_embed(struct discord *client, const struct discord_message *e
 	simple_image_embed(client, event, "ottoman", "http://d3d71ba2asa5oz.cloudfront.net/12030238/images/crmw2223be3.jpg", 0xf0feb6);
 }
 
+void ronald_embed(struct discord *client, const struct discord_message *event){
+	simple_image_embed(client, event, "ottoman", "http://d3d71ba2asa5oz.cloudfront.net/12030238/images/crmw2223be3.jpg", 0xf0feb6);
+}
+
 void rotx_send(struct discord *client, const struct discord_message *event, char *rot, char *message){
 	int x;
 	sscanf(rot, "%d", &x);
