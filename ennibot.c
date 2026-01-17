@@ -44,17 +44,8 @@ char *after_arg(char *message, int i, char **argv){
 	return message;
 }
 
-char parser(struct discord *client, const struct discord_message *event, int argc, char **argv, char *message){
-	char *cmd = argv[0] + 1;
-	if(!strcmp(cmd, "enni")){
-		reply_noping(client, event, "Hi, that's me");
-		return 1;
-	}
-	else if(!strcmp(cmd, "echo")){
-		sm_reply_reply_delete(client, event, after_arg(message, 1, argv));
-		return 1;
-	}
-	else if(!strcmp(cmd, "enot")){
+char parse_embed(struct discord *client, const struct discord_message *event, char *cmd){
+	if(!strcmp(cmd, "enot")){
 		enot_embed(client, event);
 		return 1;
 	}
@@ -62,20 +53,56 @@ char parser(struct discord *client, const struct discord_message *event, int arg
 		watcher_embed(client, event);
 		return 1;
 	}
+	else if(!strcmp(cmd, "qwerty")){
+		qwerty_embed(client, event);
+		return 1;
+	}
+	else if(!strcmp(cmd, "soulhunter")){
+		soul_embed(client, event);
+		return 1;
+	}
+	else if(!strcmp(cmd, "shin")){
+		shin_embed(client, event);
+		return 1;
+	}
+	else if(!strcmp(cmd, "ottomanempire")){
+		ottomanempire_embed(client, event);
+		return 1;
+	}
+	else if(!strcmp(cmd, "smightyguncat") || !strcmp(cmd, "gunguncat")){
+		guncat_embed(client, event);
+		return 1;
+	}
+
+	return 0;
+}
+
+char parser(struct discord *client, const struct discord_message *event, int argc, char **argv, char *message){
+	char *cmd = argv[0] + 1;
+
+	if(parse_embed(client, event, cmd)) return 1;
+	else if(!strcmp(cmd, "echo")){
+		sm_reply_reply_delete(client, event, after_arg(message, 1, argv));
+		return 1;
+	}
 	else if(!strcmp(cmd, "rotx")){
 		rotx_send(client, event, argv[1], after_arg(message, 2, argv));
+		return 1;
+	}
+	else if(!strcmp(cmd, "forcerot")){
+		rot_bf(client, event, after_arg(message, 1, argv));
 		return 1;
 	}
 	else if(!strcmp(cmd, "dice")){
 		dice(client, event, argv[1], argv[2]);
 		return 1;
 	}
-	else if(!strcmp(cmd, "pray")){
-		pray_wrap(client, event);
+	else if(!strcmp(cmd, "enni")){
+		reply_noping(client, event, "Hi, that's me");
 		return 1;
 	}
-	else if(!strcmp(cmd, "ottomanempire")){
-		ottomanempire_embed(client, event);
+	else if(!strcmp(cmd, "pray")){
+		pray_wrap(client, event);
 		return 1;
 	}
 	

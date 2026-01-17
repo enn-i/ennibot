@@ -60,7 +60,7 @@ void rotx(int x, char *string){
 	char *s = string;
 	do{
 		if(*s >= 'a' && *s <= 'z') *s = (*s - 'a' + x) % 26 + 'a';
-		if(*s >= 'A' && *s <= 'Z') *s = (*s - 'a' +x) % 26 + 'a';
+		if(*s >= 'A' && *s <= 'Z') *s = (*s - 'A' +x) % 26 + 'A';
 	}while(*++s);
 }
 

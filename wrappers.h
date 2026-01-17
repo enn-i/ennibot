@@ -19,7 +19,22 @@ void enot_embed(struct discord *client, const struct discord_message *event);
 void ottomanempire_embed(struct discord *client, const struct discord_message *event);
 
 
+void qwerty_embed(struct discord *client, const struct discord_message *event);
+
+
+void soul_embed(struct discord *client, const struct discord_message *event);
+
+
+void shin_embed(struct discord *client, const struct discord_message *event);
+
+
+void guncat_embed(struct discord *client, const struct discord_message *event);
+
+
 void rotx_send(struct discord *client, const struct discord_message *event, char *rot, char *message);
+
+
+void rot_bf(struct discord *client, const struct discord_message *event, char *message);
 
 
 void pray_wrap(struct discord *client, const struct discord_message *event);
