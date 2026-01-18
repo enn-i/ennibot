@@ -118,7 +118,7 @@ void dice(struct discord *client, const struct discord_message *event, char *ms,
 	reply_noping(client, event, rval);
 }
 
-void print_time(struct discord *client, const struct discord_message *event){
+void send_time(struct discord *client, const struct discord_message *event){
 	char rval[32];
 	p_time(rval, NULL);
 	reply_noping(client, event, rval);

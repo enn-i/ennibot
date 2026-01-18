@@ -16,6 +16,12 @@
 #include "discord.h"
 #include "log.h"
 
+// Token handling
+char **token_parser(char *message, int *args);
+void free_tokens(char **tokens, int argc);
+char *after_arg(char *message, int i, char **argv);
+
+
 void reply_noping(struct discord *client, const struct discord_message *event, char *s);
 
 

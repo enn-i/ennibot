@@ -10,39 +10,11 @@
 
 #define PREFIX "?"
 
-void
-on_ready(struct discord *client, const struct discord_ready *event){
+void on_ready(struct discord *client, const struct discord_ready *event){
 	log_info("connected to discord through %s#%s!",
 			 event->user->username, event->user->discriminator);
 }
 
-char **token_parser(char *message, int *args){
-	// setting up two passed pointers
-	char **tokens = malloc(sizeof(char *) * 10);
-	*args = 0;
-	// Tokenising with strsep and copying memory to tokens array
-	char *p = strdup(message); 
-	char *mp;
-
-	for(int i = 0; i < 10; i++){
-		if((mp = strsep(&p, " ")))
-			tokens[i] = strdup(mp);
-		else tokens[i] = NULL;
-		(*args)++;
-	}
-	free(p);
-	return tokens;
-}
-void free_tokens(char **tokens, int argc){
-	for(int i = 0; i < argc; ++i) free(tokens[i]);
-	free(tokens);
-}
-
-char *after_arg(char *message, int i, char **argv){
-	while(i--) message += strlen(argv[i]);
-	message++;
-	return message;
-}
 
 char parse_embed(struct discord *client, const struct discord_message *event, char *cmd){
 	if(!strcmp(cmd, "enot")){
@@ -116,7 +88,7 @@ char parser(struct discord *client, const struct discord_message *event, int arg
 		return 1;
 	}
 	else if(!strcmp(cmd, "time")){
-		print_time(client, event);
+		send_time(client, event);
 		return 1;
 	}
 	

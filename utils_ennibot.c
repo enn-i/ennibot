@@ -1,6 +1,32 @@
 
 #include "utils_ennibot.h"
 
+char **token_parser(char *message, int *args){
+	// setting up two passed pointers
+	char **tokens = malloc(sizeof(char *) * 10);
+	*args = 0;
+	// Tokenising with strsep and copying memory to tokens array
+	char *p = strdup(message); 
+	char *mp;
+
+	for(int i = 0; i < 10; i++){
+		if((mp = strsep(&p, " ")))
+			tokens[i] = strdup(mp);
+		else tokens[i] = NULL;
+		(*args)++;
+	}
+	free(p);
+	return tokens;
+}
+void free_tokens(char **tokens, int argc){
+	for(int i = 0; i < argc; ++i) free(tokens[i]);
+	free(tokens);
+}
+char *after_arg(char *message, int i, char **argv){
+	while(i--) message += strlen(argv[i]);
+	message++;
+	return message;
+}
 
 void reply_noping(struct discord *client, const struct discord_message *event, char *s){
 	struct discord_create_message params = { 
