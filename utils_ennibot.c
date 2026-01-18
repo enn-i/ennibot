@@ -1,6 +1,33 @@
 
 #include "utils_ennibot.h"
 
+char **token_parser(char *message, int *args){
+	// setting up two passed pointers
+	char **tokens = malloc(sizeof(char *) * 10);
+	*args = 0;
+	// Tokenising with strsep and copying memory to tokens array
+	char *p = strdup(message); 
+	char *mp;
+
+	for(int i = 0; i < 10; i++){
+		if((mp = strsep(&p, " ")))
+			tokens[i] = strdup(mp);
+		else tokens[i] = NULL;
+		(*args)++;
+	}
+	free(p);
+	return tokens;
+}
+void free_tokens(char **tokens, int argc){
+	for(int i = 0; i < argc; ++i) free(tokens[i]);
+	free(tokens);
+}
+char *after_arg(char *message, int i, char **argv){
+	while(i--) message += strlen(argv[i]);
+	message++;
+	return message;
+}
+
 void reply_noping(struct discord *client, const struct discord_message *event, char *s){
 	struct discord_create_message params = { 
 		 .content = s,
@@ -60,7 +87,7 @@ void rotx(int x, char *string){
 	char *s = string;
 	do{
 		if(*s >= 'a' && *s <= 'z') *s = (*s - 'a' + x) % 26 + 'a';
-		if(*s >= 'A' && *s <= 'Z') *s = (*s - 'a' +x) % 26 + 'a';
+		if(*s >= 'A' && *s <= 'Z') *s = (*s - 'A' +x) % 26 + 'A';
 	}while(*++s);
 }
 
@@ -126,4 +153,9 @@ unsigned long long int ulld_rand(long long unsigned int max){
 	return ++result;
 }
 
+void p_time(char *c, time_t *t){
+	time_t epoch = time(NULL);
+	if(c != NULL) sprintf(c, "%jd", (intmax_t) epoch);
+	if(t != NULL) *t = epoch;
+}
 
