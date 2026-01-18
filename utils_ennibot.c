@@ -1,6 +1,7 @@
 
 #include "utils_ennibot.h"
 
+
 void reply_noping(struct discord *client, const struct discord_message *event, char *s){
 	struct discord_create_message params = { 
 		 .content = s,
@@ -126,4 +127,9 @@ unsigned long long int ulld_rand(long long unsigned int max){
 	return ++result;
 }
 
+void p_time(char *c, time_t *t){
+	time_t epoch = time(NULL);
+	if(c != NULL) sprintf(c, "%jd", (intmax_t) epoch);
+	if(t != NULL) *t = epoch;
+}
 

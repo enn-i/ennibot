@@ -10,6 +10,9 @@
 #include <unistd.h>
 #include <sys/types.h>
 
+#include <time.h>
+#include <stdint.h>
+
 #include "discord.h"
 #include "log.h"
 
@@ -33,6 +36,9 @@ void get_current_code(char *check);
 
 
 unsigned long long int ulld_rand(long long unsigned int max);
+
+void p_time(char *c, time_t *t);
+
 
 
 

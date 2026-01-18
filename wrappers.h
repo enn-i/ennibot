@@ -31,6 +31,15 @@ void shin_embed(struct discord *client, const struct discord_message *event);
 void guncat_embed(struct discord *client, const struct discord_message *event);
 
 
+void ronald_embed(struct discord *client, const struct discord_message *event);
+
+
+void kalun_embed(struct discord *client, const struct discord_message *event);
+
+
+void bee_embed(struct discord *client, const struct discord_message *event);
+
+
 void rotx_send(struct discord *client, const struct discord_message *event, char *rot, char *message);
 
 
@@ -41,5 +50,7 @@ void pray_wrap(struct discord *client, const struct discord_message *event);
 
 
 void dice(struct discord *client, const struct discord_message *event, char *ms, char *code);
+
+void print_time(struct discord *client, const struct discord_message *event);
 
 #endif

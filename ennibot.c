@@ -73,15 +73,25 @@ char parse_embed(struct discord *client, const struct discord_message *event, ch
 		guncat_embed(client, event);
 		return 1;
 	}
-
+	else if(!strcmp(cmd, "ronald") ){
+		ronald_embed(client, event);
+		return 1;
+	}
+	else if(!strcmp(cmd, "kalun") ){
+		kalun_embed(client, event);
+		return 1;
+	}
+	else if(!strcmp(cmd, "bee") ){
+		bee_embed(client, event);
+		return 1;
+	}
 	return 0;
 }
 
 char parser(struct discord *client, const struct discord_message *event, int argc, char **argv, char *message){
 	char *cmd = argv[0] + 1;
 
-	if(parse_embed(client, event, cmd)) return 1;
-	else if(!strcmp(cmd, "echo")){
+	if(!strcmp(cmd, "echo")){
 		sm_reply_reply_delete(client, event, after_arg(message, 1, argv));
 		return 1;
 	}
@@ -105,7 +115,12 @@ char parser(struct discord *client, const struct discord_message *event, int arg
 		pray_wrap(client, event);
 		return 1;
 	}
+	else if(!strcmp(cmd, "time")){
+		print_time(client, event);
+		return 1;
+	}
 	
+	if(parse_embed(client, event, cmd)) return 1;
 	return 0;
 }
 

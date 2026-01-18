@@ -31,10 +31,24 @@ void shin_embed(struct discord *client, const struct discord_message *event){
 	simple_image_embed(client, event, "shin", "https://gcdnb.pbrd.co/images/F0gUIYU2gPFz.png", 0x4894ff);
 }
 
+
 void guncat_embed(struct discord *client, const struct discord_message *event){
 	simple_image_embed(client, event, "gungungunguncat", "https://gcdnb.pbrd.co/images/5IBCxVDS830e.png?o=1", 0x00ffc4);
 }
 
+
+void ronald_embed(struct discord *client, const struct discord_message *event){
+	simple_image_embed(client, event, "ronald", "https://static.wikia.nocookie.net/undertale/images/0/0f/Sans_battle_idle.gif/revision/latest?cb=20181110100333", 0x000000);
+}
+
+void kalun_embed(struct discord *client, const struct discord_message *event){
+	simple_image_embed(client, event, "kalun", "https://gcdnb.pbrd.co/images/Jnr6dpaRqYpn.png?o=1", 0x0d59cf);
+}
+
+
+void bee_embed(struct discord *client, const struct discord_message *event){
+	simple_image_embed(client, event, "bee", "https://gcdnb.pbrd.co/images/s7gl7hrNkKK4.png?o=1", 0xFFC34D);
+}
 void rotx_send(struct discord *client, const struct discord_message *event, char *rot, char *message){
 	int x;
 	sscanf(rot, "%d", &x);
@@ -70,7 +84,7 @@ void rot_bf(struct discord *client, const struct discord_message *event, char *m
 
 void pray_wrap(struct discord *client, const struct discord_message *event){
 	char *s = malloc(16);
-	get_current_code(s);
+	generate_code(s);
 	//log_info("pray, %s", s);
 	char *r = malloc(32);
 	sprintf(r, "`%s`", s);
@@ -100,9 +114,14 @@ void dice(struct discord *client, const struct discord_message *event, char *ms,
 			return;
 		}
 	}
-	sprintf(rval, "You rolled a %lld!", ulld_rand(max));
+	sprintf(rval, "You rolled a %llu!", ulld_rand(max));
 	reply_noping(client, event, rval);
 }
 
+void print_time(struct discord *client, const struct discord_message *event){
+	char rval[32];
+	p_time(rval, NULL);
+	reply_noping(client, event, rval);
+}
 
 
