@@ -24,7 +24,7 @@ void qwerty_embed(struct discord *client, const struct discord_message *event){
 
 void soul_embed(struct discord *client, const struct discord_message *event){
 	simple_image_embed(client, event, "Soul Hunter",
-	"https://cdn.magzter.com/1422872401/1678955167/articles/TiHvcgM2b1680084856310/THE-MYSTERY-OF-THE-BIGGEST-BLACK-HOLE-IN-THE-UNIVERSE.jpg", 0x5f26d1);
+	"https://gcdnb.pbrd.co/images/VNGNeMX6nsFl.png?o=1", 0x5f26d1);
 }
 
 void shin_embed(struct discord *client, const struct discord_message *event){
