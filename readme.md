@@ -1,4 +1,4 @@
-# Ennibot: A Discord Bot made using Concord (https://github.com/Cogmasters/concord/tree/master?tab=readme-ov-file)
+# Ennibot: A Discord Bot made using (Concord)[https://github.com/Cogmasters/concord/tree/master?tab=readme-ov-file]
 
 
 ### Instructions to run:
