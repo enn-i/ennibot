@@ -18,6 +18,7 @@ void enot_embed(struct discord *client, const struct discord_message *event);
 
 void ottomanempire_embed(struct discord *client, const struct discord_message *event);
 
+void ronald_embed(struct discord *client, const struct discord_message *event);
 
 void qwerty_embed(struct discord *client, const struct discord_message *event);
 
