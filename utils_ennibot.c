@@ -6,15 +6,15 @@ char **token_parser(char *message, int *args){
 	char **tokens = malloc(sizeof(char *) * 10);
 	*args = 0;
 	// Tokenising with strsep and copying memory to tokens array
-	char *p = strdup(message); 
+	char *p = strdup(message);
 	char *mp;
-
 	for(int i = 0; i < 10; i++){
 		if((mp = strsep(&p, " ")))
 			tokens[i] = strdup(mp);
 		else tokens[i] = NULL;
 		(*args)++;
 	}
+	while(strsep(&p, " "));
 	free(p);
 	return tokens;
 }

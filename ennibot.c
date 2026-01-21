@@ -62,6 +62,7 @@ char parse_embed(struct discord *client, const struct discord_message *event, ch
 
 char parser(struct discord *client, const struct discord_message *event, int argc, char **argv, char *message){
 	char *cmd = argv[0] + 1;
+	log_info("Start command: %s", message);
 
 	if(!strcmp(cmd, "echo")){
 		sm_reply_reply_delete(client, event, after_arg(message, 1, argv));
@@ -103,9 +104,9 @@ void on_message_create(struct discord *client, const struct discord_message *eve
 	if(!(strstr(message, PREFIX) == message)) return; // detect prefix
 	int argc;
 	char **tokens = token_parser(message, &argc);
+
 	
 	if(!parser(client, event, argc, tokens, message))
-		log_info("Invalid parse, command: %s", tokens[0]);
 	
 	free_tokens(tokens, argc);
 }
