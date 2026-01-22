@@ -153,9 +153,9 @@ unsigned long long int ulld_rand(long long unsigned int max){
 	return ++result;
 }
 
-char d_timestamp(char *c, time_t t, char *mode){
+char d_timestamp(char *c, long long unsigned int t, char *mode){
 	if(mode != NULL && !(mode = strpbrk(mode, "tTdDfFR")) ) return 0;
-	if(c != NULL) sprintf(c, "<t:%jd:%c>", (intmax_t) t, mode[0]);
+	if(c != NULL) sprintf(c, "<t:%llu:%c>", t, mode[0]);
 	else return 0;
 	return 1;
 }
