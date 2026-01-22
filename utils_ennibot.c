@@ -157,7 +157,7 @@ void d_timestamp(char *c, time_t t, char *mode){
 	char m;
 	if(mode == NULL || !(mode = strpbrk(mode, "tTdDfFR"))) m = 'f';
 	else m = mode[0];
-	if(c != NULL) sprintf(c, "<t:%llu:%c>", t, m);
+	if(c != NULL) sprintf(c, "<t:%jd:%c>", (intmax_t) t, m);
 }
 
 void p_time(char *c, time_t *t){
