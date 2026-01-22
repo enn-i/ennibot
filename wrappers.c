@@ -128,7 +128,7 @@ void dice(struct discord *client, const struct discord_message *event, char *ms,
 
 time_t sec_convert(char *s){ // converts time (<y, M, w, d, h, m, s> + int) to seconds
 	char unit; long long unsigned int value;
-	sscanf(s, "%c%d", &unit, &value);
+	sscanf(s, "%c%llu", &unit, &value);
 	switch(unit){
 		case 'y':
 			value *= 365*24*60*60; break;
