@@ -40,6 +40,9 @@ void kalun_embed(struct discord *client, const struct discord_message *event);
 void bee_embed(struct discord *client, const struct discord_message *event);
 
 
+void luna_embed(struct discord *client, const struct discord_message *event);
+
+
 void rotx_send(struct discord *client, const struct discord_message *event, char *rot, char *message);
 
 

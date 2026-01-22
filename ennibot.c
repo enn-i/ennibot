@@ -57,12 +57,15 @@ char parse_embed(struct discord *client, const struct discord_message *event, ch
 		bee_embed(client, event);
 		return 1;
 	}
+	else if(!strcmp(cmd, "luna") ){
+		luna_embed(client, event);
+		return 1;
+	}
 	return 0;
 }
 
 char parser(struct discord *client, const struct discord_message *event, int argc, char **argv, char *message){
 	char *cmd = argv[0] + 1;
-	log_info("Start command: %s", message);
 
 	if(!strcmp(cmd, "echo")){
 		sm_reply_reply_delete(client, event, after_arg(message, 1, argv));
@@ -106,7 +109,8 @@ void on_message_create(struct discord *client, const struct discord_message *eve
 	char **tokens = token_parser(message, &argc);
 
 	
-	if(!parser(client, event, argc, tokens, message))
+	if(parser(client, event, argc, tokens, message))
+		log_info("Command success: %s", message);
 	
 	free_tokens(tokens, argc);
 }

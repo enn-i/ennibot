@@ -49,6 +49,14 @@ void kalun_embed(struct discord *client, const struct discord_message *event){
 void bee_embed(struct discord *client, const struct discord_message *event){
 	simple_image_embed(client, event, "bee", "https://gcdnb.pbrd.co/images/s7gl7hrNkKK4.png?o=1", 0xFFC34D);
 }
+
+
+void luna_embed(struct discord *client, const struct discord_message *event){
+	simple_image_embed(client, event, "ruffles!", "https://gcdnb.pbrd.co/images/MoiQzzNE2Tvw.png?o=1", 0x59E0FF);
+}
+
+
+
 void rotx_send(struct discord *client, const struct discord_message *event, char *rot, char *message){
 	int x;
 	sscanf(rot, "%d", &x);
