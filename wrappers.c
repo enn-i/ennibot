@@ -126,10 +126,33 @@ void dice(struct discord *client, const struct discord_message *event, char *ms,
 	reply_noping(client, event, rval);
 }
 
+time_t sec_convert(char *s){ // converts time (<y, M, w, d, h, m, s> + int) to seconds
+	char unit; int value;
+	sscanf(s, "%c%d", &unit, &value);
+	switch(unit){
+		case 'y':
+			value *= 365*24*60*60; break;
+		case 'M':
+			value *= 30*24*60*60; break;
+		case 'w':
+			value *= 7*24*60*60; break;
+		case 'd':
+			value *= 24*60*60; break;
+		case 'h':
+			value *= 60*60; break;
+		case 'm':
+			value *= 60; break;
+	}
+	return (time_t) value;
+}
 
 void send_time(char **args, struct discord *client, const struct discord_message *event){
 	char rval[32];
 	time_t t = time(NULL);
+	for(int i = 2; i < 10; i++){
+		if(args[i] == NULL) break;
+		t += sec_convert(args[i]);
+	}
 	char *mode;
 	if(args[1] == NULL) mode = strdup("F");
 	else mode = strdup(args[1]);
