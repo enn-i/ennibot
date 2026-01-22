@@ -153,7 +153,7 @@ unsigned long long int ulld_rand(long long unsigned int max){
 	return ++result;
 }
 
-void d_timestamp(char *c, long long unsigned int t, char *mode){
+void d_timestamp(char *c, time_t t, char *mode){
 	char m;
 	if(mode == NULL || !(mode = strpbrk(mode, "tTdDfFR"))) m = 'f';
 	else m = mode[0];
