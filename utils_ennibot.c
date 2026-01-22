@@ -155,7 +155,7 @@ unsigned long long int ulld_rand(long long unsigned int max){
 
 void d_timestamp(char *c, long long unsigned int t, char *mode){
 	char m;
-	if(mode == NULL && !(mode = strpbrk(mode, "tTdDfFR"))) m = 'f';
+	if(mode == NULL || !(mode = strpbrk(mode, "tTdDfFR"))) m = 'f';
 	else m = mode[0];
 	if(c != NULL) sprintf(c, "<t:%llu:%c>", t, m);
 }
