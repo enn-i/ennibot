@@ -163,8 +163,8 @@ time_t normalise_time(char *s, time_t t){
 			base = 60; break;
 		default: return t;
 	}
-	t %= base;
-	t = (s[0] == 'p') ? base * t : base * (t + 1);
+	t -= t%base;
+	if(s[0] == n) t += base;
 	return t;
 }
 void send_time(char **args, struct discord *client, const struct discord_message *event){
