@@ -23,8 +23,7 @@ void qwerty_embed(struct discord *client, const struct discord_message *event){
 }
 
 void soul_embed(struct discord *client, const struct discord_message *event){
-	simple_image_embed(client, event, "Soul Hunter",
-	"https://gcdnb.pbrd.co/images/VNGNeMX6nsFl.png?o=1", 0x5f26d1);
+	simple_image_embed(client, event, "Soul Hunter", "https://gcdnb.pbrd.co/images/VNGNeMX6nsFl.png?o=1", 0x5f26d1);
 }
 
 void shin_embed(struct discord *client, const struct discord_message *event){
