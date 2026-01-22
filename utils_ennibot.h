@@ -43,7 +43,8 @@ void get_current_code(char *check);
 
 unsigned long long int ulld_rand(long long unsigned int max);
 
-char d_timestamp(char *c, long long unsigned int t, char *mode);
+
+void d_timestamp(char *c, long long unsigned int t, char *mode);
 
 void p_time(char *c, time_t *t);
 

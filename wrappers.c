@@ -163,7 +163,7 @@ time_t normalise_time(char *s, time_t t){
 			base = 60; break;
 		default: return t;
 	}
-	t = (s[0] = 'p') ? base * t%base : base * (t%base + 1);
+	t = (s[0] = 'p') ? base * (t%base) : base * (t%base + 1);
 	return t;
 }
 void send_time(char **args, struct discord *client, const struct discord_message *event){
@@ -177,10 +177,11 @@ void send_time(char **args, struct discord *client, const struct discord_message
 			t = normalise_time(args[i], t);
 		}
 	}
+	dtime += t;
 	char *mode;
-	if(args[1] == NULL || strpbrk(args[1], "0123456789pn")) mode = strdup("F");
+	if(args[1] == NULL || strpbrk(args[1], "0123456789")) mode = strdup("f");
 	else mode = strdup(args[1]);
-	if(!d_timestamp(rval, t, mode)) sprintf(rval, "Invalid Format");
+	d_timestamp(rval, t, mode);
 	free(mode);
 	reply_noping(client, event, rval);
 }
