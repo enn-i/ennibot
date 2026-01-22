@@ -170,7 +170,7 @@ time_t normalise_time(char *s, time_t t){
 void send_time(char **args, struct discord *client, const struct discord_message *event){
 	char rval[32];
 	time_t t = time(NULL);
-	long long unsigned int dtime;
+	long long unsigned int dtime = 0;
 	for(int i = 1; i < 10; i++){
 		if(args[i] == NULL) break;
 		if(strlen(args[i]) > 1){
