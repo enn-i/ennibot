@@ -149,16 +149,15 @@ time_t sec_convert(char *s){ // converts time (<y, M, w, d, h, m, s> + int) to s
 void send_time(char **args, struct discord *client, const struct discord_message *event){
 	char rval[32];
 	time_t t = time(NULL);
-	for(int i = 2; i < 10; i++){
+	for(int i = 1; i < 10; i++){
 		if(args[i] == NULL) break;
-		t += sec_convert(args[i]);
+		if(strlen(args[i]) > 1) t += sec_convert(args[i]);
 	}
 	char *mode;
-	if(args[1] == NULL) mode = strdup("F");
+	if(args[1] == NULL || strpbrk(args[1], "0123456789")) mode = strdup("F");
 	else mode = strdup(args[1]);
 	if(!d_timestamp(rval, t, mode)) sprintf(rval, "Invalid Format");
 	free(mode);
 	reply_noping(client, event, rval);
 }
-
 
