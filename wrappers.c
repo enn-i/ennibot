@@ -178,7 +178,7 @@ void send_time(char **args, struct discord *client, const struct discord_message
 		}
 	}
 	char *mode;
-	if(args[1] == NULL || strpbrk(args[1], "0123456789")) mode = strdup("F");
+	if(args[1] == NULL || strpbrk(args[1], "0123456789pn")) mode = strdup("F");
 	else mode = strdup(args[1]);
 	if(!d_timestamp(rval, t, mode)) sprintf(rval, "Invalid Format");
 	free(mode);
