@@ -126,9 +126,11 @@ void dice(struct discord *client, const struct discord_message *event, char *ms,
 	reply_noping(client, event, rval);
 }
 
+
 time_t sec_convert(char *s){ // converts time (<y, M, w, d, h, m, s> + int) to seconds
+	if(!strpbrk(s, "0123456789")) return 0;
 	char unit; time_t value;
-	sscanf(s, "%c%jd", &unit, &value);
+	sscanf(s, "%c%ld", &unit, &value);
 	switch(unit){
 		case 'y':
 			value *= 365*24*60*60; break;
@@ -142,6 +144,7 @@ time_t sec_convert(char *s){ // converts time (<y, M, w, d, h, m, s> + int) to s
 			value *= 60*60; break;
 		case 'm':
 			value *= 60; break;
+		default: return 0;
 	}
 	return value;
 }
@@ -178,11 +181,12 @@ void send_time(char **args, struct discord *client, const struct discord_message
 			t = normalise_time(args[i], t);
 		}
 	}
-	dtime += t;
+	log_info("Time: %jd, add: %jd", (intmax_t) t, (intmax_t) dtime);
+	t += dtime;
 	char *mode;
 	if(args[1] == NULL || strpbrk(args[1], "0123456789pn")) mode = strdup("f");
 	else mode = strdup(args[1]);
-	d_timestamp(rval, dtime, mode);
+	d_timestamp(rval, t, mode);
 	free(mode);
 	reply_noping(client, event, rval);
 }
