@@ -182,7 +182,7 @@ void send_time(char **args, struct discord *client, const struct discord_message
 	char *mode;
 	if(args[1] == NULL || strpbrk(args[1], "0123456789pn")) mode = strdup("f");
 	else mode = strdup(args[1]);
-	d_timestamp(rval, t, mode);
+	d_timestamp(rval, dtime, mode);
 	free(mode);
 	reply_noping(client, event, rval);
 }
