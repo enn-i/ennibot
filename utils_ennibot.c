@@ -153,9 +153,17 @@ unsigned long long int ulld_rand(long long unsigned int max){
 	return ++result;
 }
 
-void p_time(char *c, time_t *t){
-	time_t epoch = time(NULL);
-	if(c != NULL) sprintf(c, "%jd", (intmax_t) epoch);
-	if(t != NULL) *t = epoch;
+char d_timestamp(char *c, time_t t, char *mode){
+	if(mode != NULL && !(mode = strpbrk(mode, "tTdDfFr")) ) return 0;
+	if(c != NULL) sprintf(c, "<t:%jd:%c>", (intmax_t) t, mode[0]);
+	else return 0;
+	return 1;
 }
+
+void p_time(char *c, time_t *t){
+	if(t == NULL) *t = time(NULL);
+	if(c != NULL) sprintf(c, "%jd", (intmax_t) (*t));
+}
+
+
 

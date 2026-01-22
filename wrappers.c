@@ -126,9 +126,11 @@ void dice(struct discord *client, const struct discord_message *event, char *ms,
 	reply_noping(client, event, rval);
 }
 
-void send_time(struct discord *client, const struct discord_message *event){
+
+void send_time(char **args, struct discord *client, const struct discord_message *event){
 	char rval[32];
-	p_time(rval, NULL);
+	time_t t = time(NULL);
+	if(!d_timestamp(rval, t, args[1])) sprintf(rval, "Invalid Format");
 	reply_noping(client, event, rval);
 }
 

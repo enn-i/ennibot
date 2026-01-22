@@ -92,7 +92,7 @@ char parser(struct discord *client, const struct discord_message *event, int arg
 		return 1;
 	}
 	else if(!strcmp(cmd, "time")){
-		send_time(client, event);
+		send_time(argv, client, event);
 		return 1;
 	}
 	
