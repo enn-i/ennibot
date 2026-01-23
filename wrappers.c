@@ -1,10 +1,11 @@
 #include "wrappers.h"
 
 
-	//template
+	/*template
 void sie_template(struct discord *client, const struct discord_message *event){
-	//simple_image_embed(client, event, "name", "url", 0x);
+	simple_image_embed(client, event, "name", "url", 0x);
 }
+*/
 
 void watcher_embed(struct discord *client, const struct discord_message *event){
 	simple_image_embed(client, event, "wetcher", "https://i.redd.it/mxeffissfhuc1.png", 0x11002d);
@@ -23,8 +24,7 @@ void qwerty_embed(struct discord *client, const struct discord_message *event){
 }
 
 void soul_embed(struct discord *client, const struct discord_message *event){
-	simple_image_embed(client, event, "Soul Hunter",
-	"https://gcdnb.pbrd.co/images/VNGNeMX6nsFl.png?o=1", 0x5f26d1);
+	simple_image_embed(client, event, "Soul Hunter", "https://gcdnb.pbrd.co/images/VNGNeMX6nsFl.png?o=1", 0x5f26d1);
 }
 
 void shin_embed(struct discord *client, const struct discord_message *event){
