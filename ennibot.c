@@ -61,6 +61,10 @@ char parse_embed(struct discord *client, const struct discord_message *event, ch
 		luna_embed(client, event);
 		return 1;
 	}
+	else if(!strcmp(cmd, "bananex") ){
+		banana_embed(client, event);
+		return 1;
+	}
 	return 0;
 }
 

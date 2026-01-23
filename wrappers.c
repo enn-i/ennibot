@@ -56,6 +56,9 @@ void luna_embed(struct discord *client, const struct discord_message *event){
 }
 
 
+void banana_embed(struct discord *client, const struct discord_message *event){
+	simple_image_embed(client, event, "banananananananananex", "https://images-ext-1.discordapp.net/external/0t8xdPxDp0eQyeUDLELnSJPnKgb65xMz7Uzxu_CWnfo/https/media.tenor.com/-RjlC88-vscAAAPo/josuke.mp4", 0x102f61);
+}
 
 void rotx_send(struct discord *client, const struct discord_message *event, char *rot, char *message){
 	int x;
@@ -94,6 +97,7 @@ void pray_wrap(struct discord *client, const struct discord_message *event){
 	char *s = malloc(16);
 	generate_code(s);
 	//log_info("pray, %s", s);
+	get_current_code(s);
 	char *r = malloc(32);
 	sprintf(r, "`%s`", s);
 	reply_noping(client, event, r);
@@ -108,7 +112,7 @@ void dice(struct discord *client, const struct discord_message *event, char *ms,
 
 	if(ms == NULL || ms[0] != 'd') return;
 	long long unsigned int max;
-	sscanf(ms, "d%lld", &max);
+	sscanf(ms, "d%llu", &max);
 	if(max == 0){ //the stupid-proof 0 case for dummies
 		reply_noping(client, event, "Qwerty's Easter Egg 0");
 		return;
