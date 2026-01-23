@@ -195,3 +195,22 @@ void send_time(char **args, struct discord *client, const struct discord_message
 	reply_noping(client, event, rval);
 }
 
+void express_hex(struct discord *client, const struct discord_message *event, char *num){
+	char rval[32];
+	long long int x;
+	if(num != NULL) sscanf(num, "%lld", &x);
+	else x = 0;
+	sprintf(rval, "%llx", x);
+	reply_noping(client, event, rval);
+}
+
+
+void express_unhex(struct discord *client, const struct discord_message *event, char *num){
+	char rval[32];
+	long long int x;
+	if(num != NULL) sscanf(num, "%llx", &x);
+	else x = 0;
+	sprintf(rval, "%lld", x);
+	reply_noping(client, event, rval);
+}
+

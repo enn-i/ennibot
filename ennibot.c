@@ -99,6 +99,14 @@ char parser(struct discord *client, const struct discord_message *event, int arg
 		send_time(argv, client, event);
 		return 1;
 	}
+	else if(!strcmp(cmd, "hex")){
+		express_hex(client, event, argv[1]);
+		return 1;
+	}
+	else if(!strcmp(cmd, "unhex")){
+		express_unhex(client, event, argv[1]);
+		return 1;
+	}
 	
 	if(parse_embed(client, event, cmd)) return 1;
 	return 0;

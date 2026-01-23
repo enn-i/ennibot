@@ -57,6 +57,12 @@ void pray_wrap(struct discord *client, const struct discord_message *event);
 
 void dice(struct discord *client, const struct discord_message *event, char *ms, char *code);
 
+
 void send_time(char **args, struct discord *client, const struct discord_message *event);
+
+
+void express_hex(struct discord *client, const struct discord_message *event, char *num);
+
+void express_unhex(struct discord *client, const struct discord_message *event, char *num);
 
 #endif
