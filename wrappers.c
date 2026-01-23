@@ -57,7 +57,7 @@ void luna_embed(struct discord *client, const struct discord_message *event){
 
 
 void banana_embed(struct discord *client, const struct discord_message *event){
-	simple_image_embed(client, event, "banananananananananex", "https://images-ext-1.discordapp.net/external/0t8xdPxDp0eQyeUDLELnSJPnKgb65xMz7Uzxu_CWnfo/https/media.tenor.com/-RjlC88-vscAAAPo/josuke.mp4", 0x102f61);
+	simple_image_embed(client, event, "banananananananananex", "https://tenor.com/sIW4gtmtYp6.gif", 0x102f61);
 }
 
 void rotx_send(struct discord *client, const struct discord_message *event, char *rot, char *message){
