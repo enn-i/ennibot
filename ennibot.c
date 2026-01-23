@@ -17,7 +17,7 @@ void on_ready(struct discord *client, const struct discord_ready *event){
 
 
 char parse_embed(struct discord *client, const struct discord_message *event, char *cmd){
-	if(!strcmp(cmd, "enot")){
+	if(!strcmp(cmd, "enot") || !strcmp(cmd, "sofanthiel") || !strcmp(cmd, "inv")){
 		enot_embed(client, event);
 		return 1;
 	}
@@ -63,6 +63,10 @@ char parse_embed(struct discord *client, const struct discord_message *event, ch
 	}
 	else if(!strcmp(cmd, "bananex") ){
 		banana_embed(client, event);
+		return 1;
+	}
+	else if(!strcmp(cmd, "yfs") || !strcmp(cmd, "yfs227")){
+		yfs_embed(client, event);
 		return 1;
 	}
 	return 0;

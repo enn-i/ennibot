@@ -60,6 +60,12 @@ void banana_embed(struct discord *client, const struct discord_message *event){
 	simple_image_embed(client, event, "banananananananananex", "https://tenor.com/sIW4gtmtYp6.gif", 0x102f61);
 }
 
+
+void yfs_embed(struct discord *client, const struct discord_message *event){
+	simple_image_embed(client, event, "yfs.", "https://gcdnb.pbrd.co/images/9et5VhVs8If3.png?o=1", 0x3e0752);
+}
+
+
 void rotx_send(struct discord *client, const struct discord_message *event, char *rot, char *message){
 	int x;
 	sscanf(rot, "%d", &x);
@@ -219,7 +225,6 @@ void express_binary(struct discord *client, const struct discord_message *event,
 	long long int x;
 	if(num != NULL) sscanf(num, "%lld", &x);
 	else x = 0;
-	log_info("Expressing Binary: %lld", x);
 	for(int i = 0; i < 64; i++)
 		sprintf(rval+i, "%lld", (x >> (63-i)) & 1);
 	char *rp = rval;
