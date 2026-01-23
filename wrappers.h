@@ -65,4 +65,5 @@ void express_hex(struct discord *client, const struct discord_message *event, ch
 
 void express_unhex(struct discord *client, const struct discord_message *event, char *num);
 
+void express_binary(struct discord *client, const struct discord_message *event, char *num);
 #endif

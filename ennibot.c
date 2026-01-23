@@ -107,6 +107,10 @@ char parser(struct discord *client, const struct discord_message *event, int arg
 		express_unhex(client, event, argv[1]);
 		return 1;
 	}
+	else if(!strcmp(cmd, "binary")){
+		express_binary(client, event, argv[1]);
+		return 1;
+	}
 	
 	if(parse_embed(client, event, cmd)) return 1;
 	return 0;

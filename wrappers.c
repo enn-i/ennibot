@@ -214,3 +214,20 @@ void express_unhex(struct discord *client, const struct discord_message *event, 
 	reply_noping(client, event, rval);
 }
 
+void express_binary(struct discord *client, const struct discord_message *event, char *num){
+	char rval[128];
+	long long int x;
+	if(num != NULL) sscanf(num, "%lld", &x);
+	else x = 0;
+	log_info("Expressing Binary: %lld", x);
+	for(int i = 0; i < 64; i++)
+		sprintf(rval+i, "%lld", (x >> (63-i)) & 1);
+	char *rp = rval;
+	while(*(++rp) == '0' && strlen(rp) > 1);
+	reply_noping(client, event, rp);
+}
+
+
+
+
+
