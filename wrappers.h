@@ -52,4 +52,5 @@ void luna_embed(struct discord *client, const struct discord_message *event);
 void banana_embed(struct discord *client, const struct discord_message *event);
 void yfs_embed(struct discord *client, const struct discord_message *event);
 void lolight_embed(struct discord *client, const struct discord_message *event);
+
 #endif

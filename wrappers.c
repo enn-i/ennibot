@@ -217,6 +217,6 @@ void banana_embed(struct discord *client, const struct discord_message *event){
 void yfs_embed(struct discord *client, const struct discord_message *event){
 	simple_image_embed(client, event, "yfs.", "https://gcdnb.pbrd.co/images/9et5VhVs8If3.png?o=1", 0x3e0752);
 }
-void lolight(struct discord *client, const struct discord_message *event){
+void lolight_embed(struct discord *client, const struct discord_message *event){
 	simple_image_embed(client, event, "lolight", "https://i.pinimg.com/originals/9e/d0/7e/9ed07e35185be586408836aa591052e1.jpg", 0xffa200);
 }
