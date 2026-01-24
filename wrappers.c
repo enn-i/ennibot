@@ -1,71 +1,6 @@
 #include "wrappers.h"
 
 
-	/*template
-void sie_template(struct discord *client, const struct discord_message *event){
-	simple_image_embed(client, event, "name", "url", 0x);
-}
-*/
-
-void watcher_embed(struct discord *client, const struct discord_message *event){
-	simple_image_embed(client, event, "wetcher", "https://i.redd.it/mxeffissfhuc1.png", 0x11002d);
-}
-
-void enot_embed(struct discord *client, const struct discord_message *event){
-	simple_image_embed(client, event, "snot", "https://i.pinimg.com/736x/db/7e/9e/db7e9e8fc59d3b27e642466915fe441c.jpg", 0x00105a);
-}
-
-void ottomanempire_embed(struct discord *client, const struct discord_message *event){
-	simple_image_embed(client, event, "ottoman", "http://d3d71ba2asa5oz.cloudfront.net/12030238/images/crmw2223be3.jpg", 0xf0feb6);
-}
-
-void qwerty_embed(struct discord *client, const struct discord_message *event){
-	simple_image_embed(client, event, "denialishere?", "https://historyfacts.com/wp-content/uploads/sites/9/2025/01/FEATURE_HF_Where-did-QWERTY-Layout-come-from.jpg?resize=1024", 0xc9af00);
-}
-
-void soul_embed(struct discord *client, const struct discord_message *event){
-	simple_image_embed(client, event, "Soul Hunter", "https://gcdnb.pbrd.co/images/VNGNeMX6nsFl.png?o=1", 0x5f26d1);
-}
-
-void shin_embed(struct discord *client, const struct discord_message *event){
-	simple_image_embed(client, event, "shin", "https://gcdnb.pbrd.co/images/F0gUIYU2gPFz.png", 0x4894ff);
-}
-
-
-void guncat_embed(struct discord *client, const struct discord_message *event){
-	simple_image_embed(client, event, "gungungunguncat", "https://gcdnb.pbrd.co/images/5IBCxVDS830e.png?o=1", 0x00ffc4);
-}
-
-
-void ronald_embed(struct discord *client, const struct discord_message *event){
-	simple_image_embed(client, event, "ronald", "https://static.wikia.nocookie.net/undertale/images/0/0f/Sans_battle_idle.gif/revision/latest?cb=20181110100333", 0x000000);
-}
-
-void kalun_embed(struct discord *client, const struct discord_message *event){
-	simple_image_embed(client, event, "kalun", "https://gcdnb.pbrd.co/images/Jnr6dpaRqYpn.png?o=1", 0x0d59cf);
-}
-
-
-void bee_embed(struct discord *client, const struct discord_message *event){
-	simple_image_embed(client, event, "bee", "https://gcdnb.pbrd.co/images/s7gl7hrNkKK4.png?o=1", 0xFFC34D);
-}
-
-
-void luna_embed(struct discord *client, const struct discord_message *event){
-	simple_image_embed(client, event, "ruffles!", "https://gcdnb.pbrd.co/images/MoiQzzNE2Tvw.png?o=1", 0x59E0FF);
-}
-
-
-void banana_embed(struct discord *client, const struct discord_message *event){
-	simple_image_embed(client, event, "banananananananananex", "https://tenor.com/sIW4gtmtYp6.gif", 0x102f61);
-}
-
-
-void yfs_embed(struct discord *client, const struct discord_message *event){
-	simple_image_embed(client, event, "yfs.", "https://gcdnb.pbrd.co/images/9et5VhVs8If3.png?o=1", 0x3e0752);
-}
-
-
 void rotx_send(struct discord *client, const struct discord_message *event, char *rot, char *message){
 	int x;
 	sscanf(rot, "%d", &x);
@@ -236,3 +171,52 @@ void express_binary(struct discord *client, const struct discord_message *event,
 
 
 
+//EMBEDS
+	/*template
+void sie_template(struct discord *client, const struct discord_message *event){
+	simple_image_embed(client, event, "name", "url", 0x);
+}
+*/
+
+void watcher_embed(struct discord *client, const struct discord_message *event){
+	simple_image_embed(client, event, "wetcher", "https://i.redd.it/mxeffissfhuc1.png", 0x11002d);
+}
+void enot_embed(struct discord *client, const struct discord_message *event){
+	simple_image_embed(client, event, "snot", "https://i.pinimg.com/736x/db/7e/9e/db7e9e8fc59d3b27e642466915fe441c.jpg", 0x00105a);
+}
+void ottomanempire_embed(struct discord *client, const struct discord_message *event){
+	simple_image_embed(client, event, "ottoman", "http://d3d71ba2asa5oz.cloudfront.net/12030238/images/crmw2223be3.jpg", 0xf0feb6);
+}
+void qwerty_embed(struct discord *client, const struct discord_message *event){
+	simple_image_embed(client, event, "denialishere?", "https://historyfacts.com/wp-content/uploads/sites/9/2025/01/FEATURE_HF_Where-did-QWERTY-Layout-come-from.jpg?resize=1024", 0xc9af00);
+}
+void soul_embed(struct discord *client, const struct discord_message *event){
+	simple_image_embed(client, event, "Soul Hunter", "https://gcdnb.pbrd.co/images/VNGNeMX6nsFl.png?o=1", 0x5f26d1);
+}
+void shin_embed(struct discord *client, const struct discord_message *event){
+	simple_image_embed(client, event, "shin", "https://gcdnb.pbrd.co/images/F0gUIYU2gPFz.png", 0x4894ff);
+}
+void guncat_embed(struct discord *client, const struct discord_message *event){
+	simple_image_embed(client, event, "gungungunguncat", "https://gcdnb.pbrd.co/images/5IBCxVDS830e.png?o=1", 0x00ffc4);
+}
+void ronald_embed(struct discord *client, const struct discord_message *event){
+	simple_image_embed(client, event, "ronald", "https://static.wikia.nocookie.net/undertale/images/0/0f/Sans_battle_idle.gif/revision/latest?cb=20181110100333", 0x000000);
+}
+void kalun_embed(struct discord *client, const struct discord_message *event){
+	simple_image_embed(client, event, "kalun", "https://gcdnb.pbrd.co/images/Jnr6dpaRqYpn.png?o=1", 0x0d59cf);
+}
+void bee_embed(struct discord *client, const struct discord_message *event){
+	simple_image_embed(client, event, "bee", "https://gcdnb.pbrd.co/images/s7gl7hrNkKK4.png?o=1", 0xFFC34D);
+}
+void luna_embed(struct discord *client, const struct discord_message *event){
+	simple_image_embed(client, event, "ruffles!", "https://gcdnb.pbrd.co/images/MoiQzzNE2Tvw.png?o=1", 0x59E0FF);
+}
+void banana_embed(struct discord *client, const struct discord_message *event){
+	simple_image_embed(client, event, "banananananananananex", "https://tenor.com/sIW4gtmtYp6.gif", 0x102f61);
+}
+void yfs_embed(struct discord *client, const struct discord_message *event){
+	simple_image_embed(client, event, "yfs.", "https://gcdnb.pbrd.co/images/9et5VhVs8If3.png?o=1", 0x3e0752);
+}
+void lolight(struct discord *client, const struct discord_message *event){
+	simple_image_embed(client, event, "lolight", "https://i.pinimg.com/originals/9e/d0/7e/9ed07e35185be586408836aa591052e1.jpg", 0xffa200);
+}

@@ -69,6 +69,10 @@ char parse_embed(struct discord *client, const struct discord_message *event, ch
 		yfs_embed(client, event);
 		return 1;
 	}
+	else if(!strcmp(cmd, "lolight") || !strcmp(cmd, "findsomeoneelse'shome")){
+		lolight(client, event);
+		return 1;
+	}
 	return 0;
 }
 

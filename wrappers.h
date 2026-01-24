@@ -9,44 +9,6 @@
 #include "discord.h"
 #include "log.h"
 #include "utils_ennibot.h"
- 
-void watcher_embed(struct discord *client, const struct discord_message *event);
-
-
-void enot_embed(struct discord *client, const struct discord_message *event);
-
-
-void ottomanempire_embed(struct discord *client, const struct discord_message *event);
-
-
-void qwerty_embed(struct discord *client, const struct discord_message *event);
-
-
-void soul_embed(struct discord *client, const struct discord_message *event);
-
-
-void shin_embed(struct discord *client, const struct discord_message *event);
-
-
-void guncat_embed(struct discord *client, const struct discord_message *event);
-
-
-void ronald_embed(struct discord *client, const struct discord_message *event);
-
-
-void kalun_embed(struct discord *client, const struct discord_message *event);
-
-
-void bee_embed(struct discord *client, const struct discord_message *event);
-
-
-void luna_embed(struct discord *client, const struct discord_message *event);
-
-
-void banana_embed(struct discord *client, const struct discord_message *event);
-
-
-void yfs_embed(struct discord *client, const struct discord_message *event);
 
 
 void rotx_send(struct discord *client, const struct discord_message *event, char *rot, char *message);
@@ -69,4 +31,25 @@ void express_hex(struct discord *client, const struct discord_message *event, ch
 void express_unhex(struct discord *client, const struct discord_message *event, char *num);
 
 void express_binary(struct discord *client, const struct discord_message *event, char *num);
+
+
+
+
+
+ 
+//SIMPLE EMBEDS
+void watcher_embed(struct discord *client, const struct discord_message *event);
+void enot_embed(struct discord *client, const struct discord_message *event);
+void ottomanempire_embed(struct discord *client, const struct discord_message *event);
+void qwerty_embed(struct discord *client, const struct discord_message *event);
+void soul_embed(struct discord *client, const struct discord_message *event);
+void shin_embed(struct discord *client, const struct discord_message *event);
+void guncat_embed(struct discord *client, const struct discord_message *event);
+void ronald_embed(struct discord *client, const struct discord_message *event);
+void kalun_embed(struct discord *client, const struct discord_message *event);
+void bee_embed(struct discord *client, const struct discord_message *event);
+void luna_embed(struct discord *client, const struct discord_message *event);
+void banana_embed(struct discord *client, const struct discord_message *event);
+void yfs_embed(struct discord *client, const struct discord_message *event);
+void lolight_embed(struct discord *client, const struct discord_message *event);
 #endif
