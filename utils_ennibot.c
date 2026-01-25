@@ -60,29 +60,6 @@ void sm_reply_reply_delete(struct discord *client, const struct discord_message 
 
 }
 
-void simple_image_embed(struct discord *client, const struct discord_message *event, char *title, char *image, int color){
-    struct discord_embed embeds[] = {
-        {
-            .title = title,
-				.color = color,
-            .image =
-                &(struct discord_embed_image){
-                    .url = image,
-                },
-        },
-    };
-
-    struct discord_create_message params = {
-        .embeds =
-            &(struct discord_embeds){
-                .size = sizeof(embeds) / sizeof *embeds,
-                .array = embeds,
-            },
-    };
-    discord_create_message(client, event->channel_id, &params, NULL);
-}
-
-
 void rotx(int x, char *string){
 	char *s = string;
 	do{

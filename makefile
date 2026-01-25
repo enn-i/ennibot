@@ -11,9 +11,9 @@ LDFLAGS  = -L$(TOP)/lib
 LDLIBS   = -ldiscord -lcurl
 
 botname = ennibot
-links = utils_ennibot.o ennibot.o wrappers.o
-compiles = utils_ennibot.c ennibot.c wrappers.c
-H_FILES = utils_ennibot.h wrappers.h
+links = utils_ennibot.o ennibot.o wrappers.o embeds.o
+compiles = utils_ennibot.c ennibot.c wrappers.c embeds.c
+H_FILES = utils_ennibot.h wrappers.h embeds.h
 
 default: $(botname)
 

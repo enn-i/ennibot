@@ -7,6 +7,7 @@
 #include "log.h"
 #include "utils_ennibot.h"
 #include "wrappers.h"
+#include "embeds.h"
 
 #define PREFIX "?"
 
@@ -15,66 +16,6 @@ void on_ready(struct discord *client, const struct discord_ready *event){
 			 event->user->username, event->user->discriminator);
 }
 
-
-char parse_embed(struct discord *client, const struct discord_message *event, char *cmd){
-	if(!strcmp(cmd, "enot") || !strcmp(cmd, "sofanthiel") || !strcmp(cmd, "inv")){
-		enot_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "watcher")){
-		watcher_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "qwerty")){
-		qwerty_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "soulhunter")){
-		soul_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "shin")){
-		shin_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "ottomanempire")){
-		ottomanempire_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "smightyguncat") || !strcmp(cmd, "gunguncat")){
-		guncat_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "ronald") ){
-		ronald_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "kalun") ){
-		kalun_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "bee") ){
-		bee_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "luna") ){
-		luna_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "bananex") ){
-		banana_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "yfs") || !strcmp(cmd, "yfs227")){
-		yfs_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "lolight") || !strcmp(cmd, "findsomeoneelse'shome")){
-		lolight_embed(client, event);
-		return 1;
-	}
-	return 0;
-}
 
 char parser(struct discord *client, const struct discord_message *event, int argc, char **argv, char *message){
 	char *cmd = argv[0] + 1;

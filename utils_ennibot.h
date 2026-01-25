@@ -28,10 +28,6 @@ void reply_noping(struct discord *client, const struct discord_message *event, c
 void sm_reply_reply_delete(struct discord *client, const struct discord_message *event, char *s);
 
 
-void simple_image_embed(struct discord *client, const struct discord_message *event, char *title, char *image, int color);
-
-
-
 void rotx(int x, char *string);
 
 
