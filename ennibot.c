@@ -20,49 +20,34 @@ void on_ready(struct discord *client, const struct discord_ready *event){
 char parser(struct discord *client, const struct discord_message *event, int argc, char **argv, char *message){
 	char *cmd = argv[0] + 1;
 
-	if(!strcmp(cmd, "echo")){
+	if(!strcmp(cmd, "echo"))
 		sm_reply_reply_delete(client, event, after_arg(message, 1, argv));
-		return 1;
-	}
-	else if(!strcmp(cmd, "rotx")){
+	else if(!strcmp(cmd, "rotx"))
 		rotx_send(client, event, argv[1], after_arg(message, 2, argv));
-		return 1;
-	}
-	else if(!strcmp(cmd, "forcerot")){
+	else if(!strcmp(cmd, "forcerot"))
 		rot_bf(client, event, after_arg(message, 1, argv));
-		return 1;
-	}
-	else if(!strcmp(cmd, "dice")){
+	else if(!strcmp(cmd, "dice"))
 		dice(client, event, argv[1], argv[2]);
-		return 1;
-	}
-	else if(!strcmp(cmd, "enni")){
+	else if(!strcmp(cmd, "enni"))
 		reply_noping(client, event, "Hi, that's me");
-		return 1;
-	}
-	else if(!strcmp(cmd, "pray")){
+	else if(!strcmp(cmd, "pray"))
 		pray_wrap(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "time")){
+	else if(!strcmp(cmd, "time"))
 		send_time(argv, client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "hex")){
+	else if(!strcmp(cmd, "hex"))
 		express_hex(client, event, argv[1]);
-		return 1;
-	}
-	else if(!strcmp(cmd, "unhex")){
+	else if(!strcmp(cmd, "unhex"))
 		express_unhex(client, event, argv[1]);
-		return 1;
-	}
-	else if(!strcmp(cmd, "binary")){
+	else if(!strcmp(cmd, "binary"))
 		express_binary(client, event, argv[1]);
-		return 1;
-	}
-	
-	if(parse_embed(client, event, cmd)) return 1;
-	return 0;
+	else if(!strcmp(cmd, "insert_new_command_name"))
+		;
+	else if(parse_embed(client, event, cmd));
+
+
+	else return 0; // parse fail
+
+	return 1; // parse pass
 }
 
 void on_message_create(struct discord *client, const struct discord_message *event){

@@ -1,11 +1,12 @@
 #include "embeds.h"
 
-
 //SIMPLE EMBEDS
 	/*template
+
 void sie_template(struct discord *client, const struct discord_message *event){
 	simple_image_embed(client, event, "name", "url", 0x);
 }
+
 */
 
 void watcher_embed(struct discord *client, const struct discord_message *event){
@@ -75,62 +76,35 @@ void simple_image_embed(struct discord *client, const struct discord_message *ev
 }
 
 char parse_embed(struct discord *client, const struct discord_message *event, char *cmd){
-	if(!strcmp(cmd, "enot") || !strcmp(cmd, "sofanthiel") || !strcmp(cmd, "inv")){
+	if(!strcmp(cmd, "enot") || !strcmp(cmd, "sofanthiel") || !strcmp(cmd, "inv"))
 		enot_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "watcher")){
+	else if(!strcmp(cmd, "watcher"))
 		watcher_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "qwerty")){
+	else if(!strcmp(cmd, "qwerty"))
 		qwerty_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "soulhunter")){
+	else if(!strcmp(cmd, "soulhunter"))
 		soul_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "shin")){
+	else if(!strcmp(cmd, "shin"))
 		shin_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "ottomanempire")){
+	else if(!strcmp(cmd, "ottomanempire"))
 		ottomanempire_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "smightyguncat") || !strcmp(cmd, "gunguncat")){
+	else if(!strcmp(cmd, "smightyguncat") || !strcmp(cmd, "gunguncat"))
 		guncat_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "ronald") ){
+	else if(!strcmp(cmd, "ronald") )
 		ronald_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "kalun") ){
+	else if(!strcmp(cmd, "kalun") )
 		kalun_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "bee") ){
+	else if(!strcmp(cmd, "bee") )
 		bee_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "luna") ){
+	else if(!strcmp(cmd, "luna") )
 		luna_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "bananex") ){
+	else if(!strcmp(cmd, "bananex") )
 		banana_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "yfs") || !strcmp(cmd, "yfs227")){
+	else if(!strcmp(cmd, "yfs") || !strcmp(cmd, "yfs227"))
 		yfs_embed(client, event);
-		return 1;
-	}
-	else if(!strcmp(cmd, "lolight") || !strcmp(cmd, "findsomeoneelse'shome")){
+	else if(!strcmp(cmd, "lolight") || !strcmp(cmd, "findsomeoneelse'shome"))
 		lolight_embed(client, event);
-		return 1;
-	}
-	return 0;
+	else return 0;
+	return 1;
 }
 
