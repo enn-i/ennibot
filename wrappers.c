@@ -212,7 +212,7 @@ void luna_embed(struct discord *client, const struct discord_message *event){
 	simple_image_embed(client, event, "ruffles!", "https://gcdnb.pbrd.co/images/MoiQzzNE2Tvw.png?o=1", 0x59E0FF);
 }
 void banana_embed(struct discord *client, const struct discord_message *event){
-	simple_image_embed(client, event, "banananananananananex", "https://tenor.com/sIW4gtmtYp6.gif", 0x102f61);
+	simple_image_embed(client, event, "banananananananananex", "https://veja.abril.com.br/wp-content/uploads/2017/12/homer-simpson-1-264a0.jpg", 0x102f61);
 }
 void yfs_embed(struct discord *client, const struct discord_message *event){
 	simple_image_embed(client, event, "yfs.", "https://gcdnb.pbrd.co/images/9et5VhVs8If3.png?o=1", 0x3e0752);
