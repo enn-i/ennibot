@@ -145,7 +145,10 @@ void p_time(char *c, time_t *t){
 
 void bw_detect(char *message, struct discord *client, const struct discord_message *event){
 	char bw = 0;
+	for(char *mp = message; *mp; ++mp) *mp = tolower(*mp);
+
 	if(strstr(message, "french")) bw = 1;
+	if(strstr(message, "france")) bw = 1;
 	if(bw){
 
 		struct discord_guild_member_update  update = {
@@ -153,6 +156,7 @@ void bw_detect(char *message, struct discord *client, const struct discord_messa
 		};
 
 		discord_guild_member_update_init(&update);
+		discord_guild_member_update_cleanup(&update);
 		discord_delete_message(client, event->channel_id, event->id, &(struct discord_delete_message){.reason = "Bad word detected."}, NULL);
 
 	}
