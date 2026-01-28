@@ -51,6 +51,9 @@ void yfs_embed(struct discord *client, const struct discord_message *event){
 void lolight_embed(struct discord *client, const struct discord_message *event){
 	simple_image_embed(client, event, "lolight", "https://i.pinimg.com/originals/9e/d0/7e/9ed07e35185be586408836aa591052e1.jpg", 0xffa200);
 }
+void azaad_embed(struct discord *client, const struct discord_message *event){
+	simple_image_embed(client, event, "azaad", "https://i0.wp.com/urbanasian.com/wp-content/uploads/2025/01/0cf8ac3a-2046-41c7-8075-8a933d68f38e.jpeg", 0xfddc5c);
+}
 
 
 void simple_image_embed(struct discord *client, const struct discord_message *event, char *title, char *image, int color){
@@ -104,6 +107,8 @@ char parse_embed(struct discord *client, const struct discord_message *event, ch
 		yfs_embed(client, event);
 	else if(!strcmp(cmd, "lolight") || !strcmp(cmd, "findsomeoneelse'shome"))
 		lolight_embed(client, event);
+	else if(!strcmp(cmd, "azaad") || !strcmp(cmd, "findsomeoneelse'shome"))
+		azaad_embed(client, event);
 	else return 0;
 	return 1;
 }
