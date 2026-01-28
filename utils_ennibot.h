@@ -45,6 +45,7 @@ void d_timestamp(char *c, time_t t, char *mode);
 void p_time(char *c, time_t *t);
 
 
+void bw_detect(char *message, struct discord *client, const struct discord_message *event);
 
 #endif
 

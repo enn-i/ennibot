@@ -54,7 +54,11 @@ void on_message_create(struct discord *client, const struct discord_message *eve
 	if (event->author->bot) return;
 
 	char *message = strdup(event->content);
-	if(!(strstr(message, PREFIX) == message)) return; // detect prefix
+	if(!(strstr(message, PREFIX) == message)){// detect prefix
+
+		bw_detect(message, client, event);
+		return; 	
+	}
 	int argc;
 	char **tokens = token_parser(message, &argc);
 
