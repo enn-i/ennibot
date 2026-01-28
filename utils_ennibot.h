@@ -9,6 +9,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/types.h>
+#include <ctype.h>
 
 #include <time.h>
 #include <stdint.h>
