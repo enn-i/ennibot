@@ -69,6 +69,9 @@ void rotx(int x, char *string){
 }
 
 void generate_code(char *code){
+	const char *code_save = "current.code";
+
+	log_info("generating code");
 	int rData = open("/dev/urandom", O_RDONLY);
 	ssize_t result;
 	if((result = read(rData, code, 16)) < 0){
@@ -82,7 +85,8 @@ void generate_code(char *code){
 		code[i] = (code[i] % ('~' - '!')) + 34;
 		if(code[i] == '`') code[i] = '~';
 	}
-	FILE *f = fopen("current.code", "w"); 
+	remove(code_save);
+	FILE *f = fopen(code_save, "w"); 
 	if (f == 0){
 		fprintf(stderr, "Secret Code Writing Error");
 		return;
