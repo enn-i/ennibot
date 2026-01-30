@@ -8,6 +8,23 @@ void rotx_send(struct discord *client, const struct discord_message *event, char
 	reply_noping(client, event, message);
 }
 
+void print_uuid(struct discord *client, const struct discord_message *event){
+	char send[2000];
+	char *username;
+	uint64_t uuid;
+
+	if(event->mentions->array != NULL){
+		username = event->mentions->array[0].username;
+		uuid = event->mentions->array[0].id;
+	}else{
+		username = event->author->username;
+		uuid = event->author->id;
+	}
+	sprintf(send, "%s's (<@%lu>'s) userid is `%lu`", username, uuid, uuid);
+	reply_noping(client, event, send);
+
+}
+
 void rot_bf(struct discord *client, const struct discord_message *event, char *message){
 	char *r = malloc(2000);
 	if(strlen(message) > 500){
