@@ -42,6 +42,8 @@ char parser(struct discord *client, const struct discord_message *event, int arg
 		express_binary(client, event, argv[1]);
 	else if(!strcmp(cmd, "seeuuid"))
 		print_uuid(client, event);
+	else if(!strcmp(cmd, "avatar"))
+		see_avatar(client, event);
 	else if(!strcmp(cmd, "insert_new_command_name"))
 		;
 	else if(parse_embed(client, event, cmd));

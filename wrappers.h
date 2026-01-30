@@ -6,12 +6,17 @@
 #include <string.h>
 #include <assert.h>
 
+#include "embeds.h"
+
 #include "discord.h"
 #include "log.h"
 #include "utils_ennibot.h"
 
 
 void rotx_send(struct discord *client, const struct discord_message *event, char *rot, char *message);
+
+
+void see_avatar(struct discord *client, const struct discord_message *event);
 
 
 void print_uuid(struct discord *client, const struct discord_message *event);

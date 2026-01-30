@@ -8,6 +8,31 @@ void rotx_send(struct discord *client, const struct discord_message *event, char
 	reply_noping(client, event, message);
 }
 
+void see_avatar(struct discord *client, const struct discord_message *event){
+	char alink[256];
+	char ustring[512];
+	char *username;
+	char *avatar;
+	uint64_t uuid;
+	int ac;
+	if(event->mentions->array != NULL){
+		avatar = event->mentions->array[0].avatar;
+		username = event->mentions->array[0].username;
+		uuid = event->mentions->array[0].id;
+		ac = event->mentions->array[0].accent_color;
+	}
+	else{
+		avatar = event->author->avatar;
+		username = event->author->username;
+		uuid = event->author->id;
+		ac = event->author->accent_color;
+	}
+	sprintf(ustring, "%s's avatar", username, uuid);
+	sprintf(alink, "https://cdn.discordapp.com/avatars/%lu/%s.png?size=4096", uuid, avatar); 
+	
+	simple_image_embed(client, event, ustring, alink, ac);
+}
+
 void print_uuid(struct discord *client, const struct discord_message *event){
 	char send[2000];
 	char *username;
@@ -20,9 +45,8 @@ void print_uuid(struct discord *client, const struct discord_message *event){
 		username = event->author->username;
 		uuid = event->author->id;
 	}
-	sprintf(send, "%s's (<@%lu>'s) userid is `%lu`", username, uuid, uuid);
+	sprintf(send, "%s's (<@%lu>'s) userid is `%lu` ", username, uuid, uuid);
 	reply_noping(client, event, send);
-
 }
 
 void rot_bf(struct discord *client, const struct discord_message *event, char *message){
