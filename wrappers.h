@@ -14,6 +14,9 @@
 void rotx_send(struct discord *client, const struct discord_message *event, char *rot, char *message);
 
 
+void print_uuid(struct discord *client, const struct discord_message *event);
+
+
 void rot_bf(struct discord *client, const struct discord_message *event, char *message);
 
 

@@ -16,6 +16,7 @@
 
 #include "discord.h"
 #include "log.h"
+#include "guild.h"
 
 // Token handling
 char **token_parser(char *message, int *args);
