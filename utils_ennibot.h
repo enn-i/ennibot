@@ -49,8 +49,9 @@ void p_time(char *c, time_t *t);
 
 void bw_detect(char *message, struct discord *client, const struct discord_message *event);
 
+char dgm_setup(struct discord *client, const struct discord_message *msg, struct discord_guild_members *members, u64snowflake start);
 
-struct discord_user *find_mem(struct discord *client, const struct discord_message *msg, char *username, u64snowflake *uuid);
+struct discord_guild_member *find_mem(struct discord *client, const struct discord_message *msg, struct discord_guild_members *dgm, char *username, u64snowflake *uuid);
 
 #endif
 

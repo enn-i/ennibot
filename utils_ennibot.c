@@ -165,28 +165,33 @@ void bw_detect(char *message, struct discord *client, const struct discord_messa
 	}
 }
 
-struct discord_user *find_mem(struct discord *client, const struct discord_message *msg, char *username, u64snowflake *uuid){
-	struct discord_guild_members members = {0};
-	struct discord_ret_guild_members rgm = {.sync = &members};
-	struct discord_list_guild_members parameters = {.limit = 10000, .after = 0};
+char dgm_setup(struct discord *client, const struct discord_message *msg, struct discord_guild_members *members, u64snowflake start){
+	struct discord_ret_guild_members rgm = {.sync = members};
+	struct discord_list_guild_members parameters = {.limit = 1000, .after = start};
 	CCORDcode code;
+	code = discord_list_guild_members(client, msg->guild_id, &parameters, &rgm);
+	if(code != CCORD_OK || members->size <= 0){
+		reply_noping(client, msg, "Unable to read discord server members");
+		return 0;
+	}
+	return 1;
+}
 
-	code = discord_list_guild_members(client, msg->member->guild_id, &parameters, &rgm);
-	if(code != CCORD_OK || members.size <= 0)
-		return NULL;
-	
-	for(int i = 0; i < members.size; ++i){
+struct discord_guild_member *find_mem(struct discord *client, const struct discord_message *msg, struct discord_guild_members *members, char *username, u64snowflake *uuid){
+	for(int i = 0; i < members->size; ++i){
 		if(username){
-			if(!strcmp(members.array[i].user->username, username)){
-				discord_guild_members_cleanup(&members);
-				return members.array[i].user;
+			if(!strcmp(members->array[i].user->username, username)){
+				return &members->array[i];
 			}
 		}
 		else if(uuid){
-			if(*uuid == members.array[i].user->id){
-				discord_guild_members_cleanup(&members);
-				return members.array[i].user;
+			if(*uuid == members->array[i].user->id){
+				return &members->array[i];
 			}
+		}
+		if(i == 999){
+			discord_guild_members_cleanup(members);
+			if(dgm_setup(client, msg, members, members->array[i].user->id)) return NULL;
 		}
 	}
 	return NULL;
