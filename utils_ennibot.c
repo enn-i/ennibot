@@ -162,7 +162,37 @@ void bw_detect(char *message, struct discord *client, const struct discord_messa
 		discord_guild_member_update_init(&update);
 		discord_guild_member_update_cleanup(&update);
 		discord_delete_message(client, event->channel_id, event->id, &(struct discord_delete_message){.reason = "Bad word detected."}, NULL);
-
 	}
 }
+
+struct discord_user *find_mem(struct discord *client, const struct discord_message *msg, char *username, u64snowflake *uuid){
+	struct discord_guild_members members = {0};
+	struct discord_ret_guild_members rgm = {.sync = &members};
+	struct discord_list_guild_members parameters = {.limit = 10000, .after = 0};
+	CCORDcode code;
+
+	code = discord_list_guild_members(client, msg->member->guild_id, &parameters, &rgm);
+	if(code != CCORD_OK || members.size <= 0)
+		return NULL;
+	
+	for(int i = 0; i < members.size; ++i){
+		if(username){
+			if(!strcmp(members.array[i].user->username, username)){
+				return members.array[i].user;
+			}
+		}
+		else if(uuid){
+			if(*uuid == members.array[i].user->id){
+				return members.array[i].user;
+			}
+		}
+	}
+	return NULL;
+}
+ 
+
+
+
+
+
 

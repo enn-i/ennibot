@@ -49,5 +49,8 @@ void p_time(char *c, time_t *t);
 
 void bw_detect(char *message, struct discord *client, const struct discord_message *event);
 
+
+struct discord_user *find_mem(struct discord *client, const struct discord_message *msg, char *username, u64snowflake *uuid);
+
 #endif
 

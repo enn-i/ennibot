@@ -27,7 +27,7 @@ void see_avatar(struct discord *client, const struct discord_message *event){
 		uuid = event->author->id;
 		ac = event->author->accent_color;
 	}
-	sprintf(ustring, "%s's avatar", username, uuid);
+	sprintf(ustring, "%s's avatar", username);
 	sprintf(alink, "https://cdn.discordapp.com/avatars/%lu/%s.png?size=4096", uuid, avatar); 
 	
 	simple_image_embed(client, event, ustring, alink, ac);
