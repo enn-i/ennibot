@@ -178,11 +178,13 @@ struct discord_user *find_mem(struct discord *client, const struct discord_messa
 	for(int i = 0; i < members.size; ++i){
 		if(username){
 			if(!strcmp(members.array[i].user->username, username)){
+				discord_guild_members_cleanup(&members);
 				return members.array[i].user;
 			}
 		}
 		else if(uuid){
 			if(*uuid == members.array[i].user->id){
+				discord_guild_members_cleanup(&members);
 				return members.array[i].user;
 			}
 		}
