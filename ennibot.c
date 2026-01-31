@@ -43,7 +43,7 @@ char parser(struct discord *client, const struct discord_message *event, int arg
 	else if(!strcmp(cmd, "seeuuid"))
 		print_uuid(client, event);
 	else if(!strcmp(cmd, "avatar"))
-		see_avatar(client, event);
+		see_avatar(client, event, argv);
 	else if(!strcmp(cmd, "insert_new_command_name"))
 		;
 	else if(parse_embed(client, event, cmd));

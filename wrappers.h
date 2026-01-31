@@ -16,7 +16,7 @@
 void rotx_send(struct discord *client, const struct discord_message *event, char *rot, char *message);
 
 
-void see_avatar(struct discord *client, const struct discord_message *event);
+void see_avatar(struct discord *client, const struct discord_message *event, char **argv);
 
 
 void print_uuid(struct discord *client, const struct discord_message *event);

@@ -8,7 +8,7 @@ void rotx_send(struct discord *client, const struct discord_message *event, char
 	reply_noping(client, event, message);
 }
 
-void see_avatar(struct discord *client, const struct discord_message *event){
+void see_avatar(struct discord *client, const struct discord_message *event, char **argv){
 	char alink[256];
 	char ustring[512];
 	char *username;
@@ -21,6 +21,13 @@ void see_avatar(struct discord *client, const struct discord_message *event){
 		uuid = event->mentions->array[0].id;
 		ac = event->mentions->array[0].accent_color;
 	}
+	else if(argv[1] != NULL){
+		struct discord_user *user = find_mem(client, event, argv[1], NULL);	
+		avatar = user->avatar;
+		username = argv[1];
+		uuid = user->id;
+		ac = user->accent_color;
+	}
 	else{
 		avatar = event->author->avatar;
 		username = event->author->username;
@@ -29,7 +36,6 @@ void see_avatar(struct discord *client, const struct discord_message *event){
 	}
 	sprintf(ustring, "%s's avatar", username);
 	sprintf(alink, "https://cdn.discordapp.com/avatars/%lu/%s.png?size=4096", uuid, avatar); 
-	
 	simple_image_embed(client, event, ustring, alink, ac);
 }
 
