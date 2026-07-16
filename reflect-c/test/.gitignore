@@ -1,0 +1,12 @@
+# Ignore all
+*
+# But these
+!.gitignore
+!Makefile
+!api
+!api/.clang-format
+!api/*.recipe.h
+!*.h
+!*.c
+!json-build
+!jsmn-find

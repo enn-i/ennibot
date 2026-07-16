@@ -1,0 +1,94 @@
+#ifdef REFLECTC_DEFINITIONS
+
+#define REFLECTC_PRE_HOOKS
+#include "reflect-c_EXPAND.h"
+
+/*#!
+#include "reflect-c.h"
+
+#define _
+*/
+
+#define _pick_namespace(_namespace)                                           \
+    /*#! #define */ REFLECTC_DEFINED##__##_namespace
+#define REFLECTC_PUBLIC 1
+#define REFLECTC_PRIVATE 1
+#define REFLECTC_STRUCT(_type) _pick_namespace(_type)
+#define REFLECTC_UNION(_type) _pick_namespace(_type)
+#define REFLECTC_ENUM(_name) _pick_namespace(_name)
+#include "reflect-c_EXPAND.h"
+#undef _pick_namespace
+
+#define REFLECTC_PUBLIC 1
+#define REFLECTC_PRIVATE 1
+#define REFLECTC_STRUCT(_type)
+#define REFLECTC_UNION(_type)
+#define RCF(_namespace, _qualifier, _container, _type, _decorator, _name,     \
+             _alias, _dimensions, _attrs)
+#define REFLECTC_STRUCT_END(_namespace)
+#define REFLECTC_UNION_END(_namespace)
+#define REFLECTC_ENUM(_name)                                                  \
+    enum _name {
+#define RCE(_namespace, _enumerator, _eq, _value)                             \
+        _enumerator _eq _value,
+#define REFLECTC_ENUM_END(_namespace)                                         \
+        __##_namespace##_MAX__                                                \
+    };
+#include "reflect-c_EXPAND.h"
+
+#define _pick_container(_container, _type)                                    \
+    _container _type {
+#define _pick_member(_namespace, _qualifier, _container, _type, _decorator,   \
+                    _name, _alias, _dimensions, _attrs)                       \
+        _qualifier _container _type _decorator _name _dimensions;
+#define _pick_container_end(_namespace)                                       \
+    };
+#define REFLECTC_PUBLIC 1
+#define REFLECTC_PRIVATE 1
+#define REFLECTC_STRUCT(_type) _pick_container(struct, _type)
+#define REFLECTC_UNION(_type) _pick_container(union, _type)
+#define RCF(_namespace, _qualifier, _container, _type, _decorator, _name,     \
+             _alias, _dimensions, _attrs)                                     \
+    _pick_member(_namespace, _qualifier, _container, _type, _decorator,       \
+                _name, _alias, _dimensions, _attrs)
+#define REFLECTC_STRUCT_END(_namespace) _pick_container_end(_namespace)
+#define REFLECTC_UNION_END(_namespace) _pick_container_end(_namespace)
+#define REFLECTC_ENUM(_name)
+#define RCE(_namespace, _enumerator, _eq, _value)
+#define REFLECTC_ENUM_END(_namespace)
+#include "reflect-c_EXPAND.h"
+#undef _pick_container
+#undef _pick_member
+#undef _pick_container_end
+
+#define _pick_container(_container, _type)                                    \
+    enum {
+#define _pick_member(_namespace, _qualifier, _container, _type, _decorator,   \
+                    _name, _alias, _dimensions, _attrs)                       \
+        REFLECTC_NS_UPPER(_LOOKUP__##_namespace##__##_name),
+#define _pick_container_end(_namespace)                                       \
+        REFLECTC_NS_UPPER(_LOOKUP__##_namespace##_MAX)                        \
+    };
+#define REFLECTC_PUBLIC 1
+#define REFLECTC_PRIVATE 1
+#define REFLECTC_STRUCT(_type) _pick_container(struct, _type)
+#define REFLECTC_UNION(_type) _pick_container(union, _type)
+#define RCF(_namespace, _qualifier, _container, _type, _decorator, _name,     \
+             _alias, _dimensions, _attrs)                                     \
+    _pick_member(_namespace, _qualifier, _container, _type, _decorator, _name,\
+                _alias, _dimensions, _attrs)
+#define REFLECTC_STRUCT_END(_namespace) _pick_container_end(_namespace)
+#define REFLECTC_UNION_END(_namespace) _pick_container_end(_namespace)
+#include "reflect-c_EXPAND.h"
+#undef _pick_container
+#undef _pick_member
+#undef _pick_container_end
+
+#define REFLECTC_POST_HOOKS
+#include "reflect-c_EXPAND.h"
+
+/*#!
+#undef _
+*/
+
+#endif /* REFLECTC_DEFINITIONS */

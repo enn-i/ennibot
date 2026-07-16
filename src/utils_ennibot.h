@@ -1,5 +1,5 @@
 #ifndef UTILS_ENNIBOT
-#define UITLS_ENNIBOT
+#define UTILS_ENNIBOT
 
 #include <stdio.h>
 #include <stdlib.h>
