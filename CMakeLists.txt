@@ -1,8 +1,29 @@
 cmake_minimum_required(VERSION 3.15)
-project(Ennibot
-	LANGUAGES C)
-add_executable(ennibot ennibot.c)
+project(Ennibot LANGUAGES C)
+add_subdirectory(src)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-target_include_directories(ennibot src)
 
+add_library(core STATIC IMPORTED)
+	set_target_properties(core PROPERTIES
+		IMPORTED_LOCATION "${CMAKE_SOURCE_DIR}/core/core.a"
+		INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}/core"
+	)
+add_library(lib STATIC IMPORTED)
+	set_target_properties(lib PROPERTIES
+		IMPORTED_LOCATION "${CMAKE_SOURCE_DIR}/lib/lib.a"
+	)
+add_library(generated STATIC IMPORTED)
+	set_target_properties(core PROPERTIES
+		IMPORTED_LOCATION "${CMAKE_SOURCE_DIR}/generated/generated.a"
+		INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}/generated"
+	)
+add_library(reflect-c STATIC IMPORTED)
+	set_target_properties(core PROPERTIES
+		IMPORTED_LOCATION "${CMAKE_SOURCE_DIR}/reflect-c/reflect-c.a"
+		INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}/reflect-c"
+	)
+add_library(include INTERFACE)
+	set_target_properties(core PROPERTIES
+		INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}/include"
+	)
