@@ -1,4 +1,3 @@
-
 #include "utils_ennibot.h"
 
 char **token_parser(char *message, int *args) {
@@ -215,7 +214,7 @@ struct discord_guild_member *find_mem(struct discord *client,
       }
     }
     if (i == 999) {
-      discord_guild_members_cleanup(members);
+      // discord_guild_members_cleanup(members);
       if (dgm_setup(client, msg, members, members->array[i].user->id))
         return NULL;
     }

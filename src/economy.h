@@ -1,13 +1,13 @@
-#include <utils_ennibot.h>
+#include "utils_ennibot.h"
 
 
 struct profile{
-	char[256] name;
+	char name[255];
 	long long unsigned int money;
 	time_t last_stab;
 	unsigned int attack;
 	unsigned int defense;
-}
+};
 
 
 
