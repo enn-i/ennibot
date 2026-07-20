@@ -45,7 +45,7 @@ void see_avatar(struct discord *client, const struct discord_message *event, cha
 	sprintf(ustring, "%s's (%s's) avatar", nickname, username);
 	sprintf(alink, "https://cdn.discordapp.com/avatars/%lu/%s.png?size=4096", uuid, avatar); 
 	simple_image_embed(client, event, ustring, alink, ac);
-	discord_guild_members_cleanup(dgms); // cleanup discord_guild_members (important to prevent mem leaks)
+	//discord_guild_members_cleanup(dgms); // cleanup discord_guild_members (important to prevent mem leaks)
 }
 
 void print_uuid(struct discord *client, const struct discord_message *event){

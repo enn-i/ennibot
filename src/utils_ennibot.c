@@ -172,8 +172,8 @@ void bw_detect(char *message, struct discord *client,
     bw = 1;
   if (strstr(message, "france"))
     bw = 1;
+  /*
   if (bw) {
-
     struct discord_guild_member_update update = {
         .communication_disabled_until = ((uint64_t)(time(NULL) + 30)) * 1000};
 
@@ -183,6 +183,7 @@ void bw_detect(char *message, struct discord *client,
         client, event->channel_id, event->id,
         &(struct discord_delete_message){.reason = "Bad word detected."}, NULL);
   }
+  */
 }
 
 char dgm_setup(struct discord *client, const struct discord_message *msg,
