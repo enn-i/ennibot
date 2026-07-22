@@ -74,17 +74,19 @@ void on_message_create(struct discord *client, const struct discord_message *eve
 
 
 int main(int argc, char *argv[]){
+	printf("Starting ennibot!:\n");
 	const char *config_file;
 	if (argc > 1)
 		config_file = argv[1];
 	else
 		config_file = "../config.json";
 
-	ccord_global_init();
-	struct discord *client = discord_config_init(config_file);
+	//ccord_global_init();
+	struct discord *client = discord_from_json(config_file);
 	assert(NULL != client && "Couldn't initialize client");
+	printf("Read config!\n");
 
-	discord_add_intents(client, DISCORD_GATEWAY_MESSAGE_CONTENT);
+	//discord_add_intents(client, DISCORD_GATEWAY_MESSAGE_CONTENT);
 	log_info("Ennibot starting... waiting for connection...");
 
 	discord_set_on_ready(client, &on_ready);
