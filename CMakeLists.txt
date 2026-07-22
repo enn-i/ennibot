@@ -20,10 +20,12 @@ set_target_properties(
 add_library(include INTERFACE)
 set_target_properties(include PROPERTIES INTERFACE_INCLUDE_DIRECTORIES
                                          "${CMAKE_SOURCE_DIR}/include")
+
+find_package(CURL REQUIRED)
 add_library(lib STATIC IMPORTED GLOBAL)
 set_target_properties(
   lib PROPERTIES IMPORTED_LOCATION "${CMAKE_SOURCE_DIR}/lib/libdiscord.a"
-                 INTERFACE_LINK_LIBRARIES "core")
+  INTERFACE_LINK_LIBRARIES "CURL::libcurl")
 
 target_link_libraries(include INTERFACE core generated reflect-c)
 target_link_libraries(core INTERFACE generated reflect-c include)
